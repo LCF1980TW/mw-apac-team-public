@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MW × Agent｜文件工作啟動方法</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/monokai.css">
+<style>
+  :root {
+    --navy: #fbf6f4;
+    --navy-2: #f2e6e5;
+    --deep: #5b2330;
+    --gold: #b18a4a;
+    --teal: #6f8e88;
+    --ink: #241f22;
+    --muted: #62595d;
+    --line: rgba(112,47,63,.17);
+    --r-background-color: var(--navy);
+    --r-main-color: var(--ink);
+    --r-heading-color: var(--deep);
+    --r-link-color: var(--teal);
+    --r-heading-font: "Microsoft JhengHei", "PingFang TC", sans-serif;
+    --r-main-font: "Microsoft JhengHei", "PingFang TC", sans-serif;
+  }
+  .reveal { font-family: var(--r-main-font); background: var(--navy); color: var(--ink); }
+  .reveal .slides section { text-align: left; }
+  .reveal h1, .reveal h2 { font-family: "Noto Serif TC", "Source Han Serif TC", "Microsoft JhengHei", serif; font-weight: 700; letter-spacing: -.035em; }
+  .reveal h3 { font-weight: 700; letter-spacing: .12em; }
+  .reveal h1 { font-size: 2.35em; line-height: 1.12; }
+  .reveal h2 { font-size: 1.65em; margin-bottom: .55em; }
+  .reveal h3 { font-size: .85em; color: var(--gold); text-transform: uppercase; letter-spacing: .08em; }
+  .reveal p, .reveal li { color: var(--ink); }
+  .reveal small, .muted { color: var(--muted); }
+  .reveal .slides section::before { content: "HIRO / EDGE"; position: absolute; top: -2.1em; left: 0; color: var(--gold); font-size: .34em; letter-spacing: .24em; font-weight: 700; }
+  .reveal .slides section.title::before, .reveal .slides section.dark::before { color: var(--teal); }
+  .eyebrow { color: var(--teal); font-size: .44em; letter-spacing: .18em; font-weight: 700; text-transform: uppercase; margin-bottom: 1.1em; }
+  .accent { color: var(--gold); }
+  .teal { color: var(--teal); }
+  .lead { font-size: 1.02em; line-height: 1.55; max-width: 900px; color: var(--ink) !important; }
+  .sub { color: var(--muted) !important; font-size: .62em; }
+  .title { background: radial-gradient(circle at 85% 18%, rgba(112,47,63,.16), transparent 28%), linear-gradient(135deg, #fffaf8 0%, #f8eeeb 62%, #eadbdd 100%); }
+  .title h1 { max-width: 900px; }
+  .title .rule { width: 110px; height: 5px; background: var(--gold); margin: 1.1em 0; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2em; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: .85em; }
+  .card { background: rgba(255,253,251,.86); border: 1px solid var(--line); border-radius: 4px; padding: .85em 1em; min-height: 130px; box-shadow: 0 8px 22px rgba(112,47,63,.045); }
+  .card h4 { margin: 0 0 .45em; color: var(--gold); font-size: .68em; }
+  .card p { margin: 0; font-size: .68em; line-height: 1.48; }
+  .number { font-size: 1.7em; color: var(--teal); font-weight: 800; line-height: 1; margin-bottom: .25em; }
+  .callout { border-left: 3px solid var(--gold); background: rgba(177,138,74,.08); padding: .7em 1em; margin: .8em 0; border-radius: 0 3px 3px 0; }
+  .callout strong { color: var(--gold); }
+  .flow { display: flex; align-items: stretch; gap: .32em; margin-top: 1.1em; }
+  .flow .step { flex: 1; background: rgba(242,230,229,.72); border-top: 2px solid var(--teal); padding: .75em .55em; min-height: 115px; box-shadow: 0 6px 18px rgba(112,47,63,.045); }
+  .flow .step:nth-child(3n+2) { border-top-color: var(--gold); }
+  .flow .step b { display: block; font-size: .68em; margin-bottom: .45em; }
+  .flow .step span { display: block; color: var(--muted); font-size: .56em; line-height: 1.35; }
+  .flow .arrow { align-self: center; color: var(--gold); font-size: .9em; }
+  .gate { display: flex; gap: .8em; align-items: center; padding: .75em 0; border-bottom: 1px solid var(--line); }
+  .gate:last-child { border-bottom: 0; }
+  .gate .badge { min-width: 90px; color: var(--navy); background: var(--gold); padding: .28em .5em; text-align: center; font-weight: 800; font-size: .46em; border-radius: 4px; }
+  .gate p { margin: 0; font-size: .66em; }
+  table { font-size: .66em; width: 100%; border-collapse: collapse; }
+  th { color: var(--gold); background: rgba(245,185,66,.12); padding: .55em .65em; text-align: left; }
+  td { padding: .52em .65em; border-bottom: 1px solid var(--line); color: #dbe7e9; }
+  pre { font-size: .48em !important; background: #f3e9e8 !important; color: var(--deep); border: 1px solid var(--line); border-radius: 4px; padding: 1em !important; box-shadow: 0 12px 30px rgba(112,47,63,.06); }
+  .footer { position: fixed; bottom: 1em; right: 1.5em; font-size: .34em; color: var(--muted); letter-spacing: .08em; }
+  .reveal .progress { color: var(--gold); height: 4px; }
+  .reveal .controls { color: var(--teal); }
+  @media (max-width: 800px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } .flow { display: grid; grid-template-columns: 1fr; } .flow .arrow { display:none; } }
+</style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <section class="title" data-background-color="#f4f8f9">
+      <div class="eyebrow">Medical Writing × Agentic AI</div>
+      <h1>從零開始一份文件：<br><span class="accent">MW 如何啟動 Agent 工作流</span></h1>
+      <div class="rule"></div>
+      <p class="lead">把 AI 放在正確的位置：先盤點證據，再規劃、起草、核查，最後由 MW 做決策。</p>
+      <p class="sub">HiRO Edge｜繁體中文工作指南</p>
+      <aside class="notes">本簡報聚焦於文件工作的第一步：如何讓 Agent 從「理解任務」開始，而不是直接生成全文。</aside>
+    </section>
+
+    <section>
+      <h3>01 / 核心觀念</h3>
+      <h2>不要從「寫全文」開始</h2>
+      <div class="grid-2">
+        <div class="card"><div class="number">01</div><h4>先建立上下文</h4><p>文件目的、研究階段、地區、模板、截止日期。</p></div>
+        <div class="card"><div class="number">02</div><h4>先鎖定證據</h4><p>每個重要結論都要能追溯到來源與位置。</p></div>
+        <div class="card"><div class="number">03</div><h4>再分章節起草</h4><p>以章節為單位，逐步生成、逐步確認。</p></div>
+        <div class="card"><div class="number">04</div><h4>最後做品質控制</h4><p>數據、邏輯、術語與跨文件一致性分開檢查。</p></div>
+      </div>
+      <div class="callout"><strong>關鍵轉變：</strong>讓 Agent 先當「工作分析員」，再當「起草助手」。</div>
+    </section>
+
+    <section>
+      <h3>02 / 啟動前</h3>
+      <h2>先準備一個文件任務包</h2>
+      <table>
+        <thead><tr><th>類別</th><th>需要提供</th><th>Agent 的用途</th></tr></thead>
+        <tbody>
+          <tr><td>文件定位</td><td>CSR / Protocol / IB / CTD</td><td>選擇結構與工作流</td></tr>
+          <tr><td>研究背景</td><td>階段、適應症、治療方案</td><td>建立寫作上下文</td></tr>
+          <tr><td>來源資料</td><td>Protocol、SAP、TFL、Narratives</td><td>建立證據鏈</td></tr>
+          <tr><td>交付要求</td><td>模板、語言、格式、期限</td><td>定義完成標準</td></tr>
+        </tbody>
+      </table>
+      <p class="sub">資料不足時，先列出缺口；不要讓 AI 以推測填補。</p>
+    </section>
+
+    <section>
+      <h3>03 / Intake</h3>
+      <h2>第一個 Agent 任務：資料盤點</h2>
+      <div class="grid-2">
+        <div>
+          <div class="gate"><span class="badge">SOURCE</span><p>建立來源文件清單，標記版本、日期、狀態。</p></div>
+          <div class="gate"><span class="badge">DATA LOCK</span><p>區分已確認、待確認、不可使用的資料。</p></div>
+          <div class="gate"><span class="badge">GAP LOG</span><p>列出缺失資料及其對章節與時程的影響。</p></div>
+        </div>
+        <div class="callout"><strong>輸出不是正文。</strong><br><br>輸出是一張可供 MW 審閱的「工作地圖」，讓後續起草有邊界、有來源。</div>
+      </div>
+      <aside class="notes">建議把 Source Manifest、Data Lock Table、Claim-Evidence Matrix 與 Gap and Impact Log 作為固定啟動產物。</aside>
+    </section>
+
+    <section>
+      <h3>04 / Planning</h3>
+      <h2>第二個 Agent 任務：文件規劃</h2>
+      <div class="flow">
+        <div class="step"><b>文件要求</b><span>模板、法規、Sponsor 偏好</span></div><div class="arrow">→</div>
+        <div class="step"><b>章節地圖</b><span>每章目的與必要輸入</span></div><div class="arrow">→</div>
+        <div class="step"><b>證據分配</b><span>來源對應到段落與表格</span></div><div class="arrow">→</div>
+        <div class="step"><b>風險排序</b><span>先處理高影響缺口</span></div>
+      </div>
+      <div class="callout"><strong>MW 的審閱重點：</strong>Agent 的大綱是否符合文件目的，而不只是看起來完整。</div>
+    </section>
+
+    <section>
+      <h3>05 / Evidence</h3>
+      <h2>讓每個重要結論都有證據</h2>
+      <div class="grid-2">
+        <div class="card"><h4>Claim｜主張</h4><p>治療在目標族群中顯示出臨床活性。</p></div>
+        <div class="card"><h4>Evidence｜證據</h4><p>CSR Section 11.4；Table 14.2.1；資料截止日。</p></div>
+        <div class="card"><h4>Interpretation｜解讀</h4><p>由 MW / SME 判斷臨床意義與限制。</p></div>
+        <div class="card"><h4>Status｜狀態</h4><p><span class="teal">已確認</span>／<span class="accent">待確認</span>／不可使用</p></div>
+      </div>
+      <p class="sub">AI 可以整理證據與差距；不能替代醫學判斷。</p>
+    </section>
+
+    <section>
+      <h3>06 / Drafting</h3>
+      <h2>第三個 Agent 任務：分章節起草</h2>
+      <div class="flow">
+        <div class="step"><b>輸入資料</b><span>表格、圖、Listing、Narrative</span></div><div class="arrow">→</div>
+        <div class="step"><b>生成敘述</b><span>依模板與監管語氣組織</span></div><div class="arrow">→</div>
+        <div class="step"><b>標注來源</b><span>保留表號、章節、頁碼</span></div><div class="arrow">→</div>
+        <div class="step"><b>標記缺口</b><span>[待確認：XXX]</span></div>
+      </div>
+      <div class="callout"><strong>建議：</strong>先從一個高重複、邊界清楚的章節試行，例如 CSR 的研究結果或安全性摘要。</div>
+    </section>
+
+    <section>
+      <h3>07 / Quality Control</h3>
+      <h2>把起草與 QC 分成兩個角色</h2>
+      <div class="grid-2">
+        <div>
+          <h4 class="teal">起草 Agent</h4>
+          <ul><li>整理內容</li><li>建立敘事</li><li>保留來源</li><li>標記缺口</li></ul>
+        </div>
+        <div>
+          <h4 class="accent">QC Agent</h4>
+          <ul><li>查數字與日期</li><li>查分析集與終點</li><li>查術語與縮寫</li><li>查跨文件矛盾</li></ul>
+        </div>
+      </div>
+      <p class="sub">同一個 Agent 既寫又判定自己正確，容易漏掉問題。</p>
+    </section>
+
+    <section>
+      <h3>08 / Cross-check</h3>
+      <h2>最值得自動化：跨文件一致性</h2>
+      <div class="grid-3">
+        <div class="card"><h4>Protocol ↔ ICF</h4><p>入排標準、風險、受試者流程</p></div>
+        <div class="card"><h4>IB ↔ CSR</h4><p>劑量、安全性、臨床資料</p></div>
+        <div class="card"><h4>IB ↔ RMP</h4><p>已識別風險、潛在風險</p></div>
+      </div>
+      <div class="callout"><strong>輸出格式：</strong>文件 A 位置 → 文件 B 位置 → 差異類型 → 建議統一表述。</div>
+    </section>
+
+    <section>
+      <h3>09 / Prompt</h3>
+      <h2>可直接複製的啟動指令</h2>
+      <pre><code>你是本文件的 Medical Writing Agent。
+文件類型：[CSR / Protocol / IB / CTD]
+文件目的：[提交 / 更新 / 回覆審評意見]
+適用地區：[FDA / NMPA / EMA]
+
+請先不要起草正文，先輸出：
+1. Source Manifest
+2. Data Lock Table
+3. Claim-Evidence Matrix
+4. Gap and Impact Log
+5. 文件大綱與工作順序
+
+不得捏造數據。資料不足時標記 [待確認：XXX]。
+每個重要主張都必須附來源位置。</code></pre>
+    </section>
+
+    <section class="dark" data-background-color="#e8f1f3">
+      <h3>10 / Operating Model</h3>
+      <h2>最終責任仍在 MW</h2>
+      <div class="grid-2">
+        <div class="card"><h4>Agent 負責</h4><p>盤點、整理、起草、比對、標記風險、產生修改建議。</p></div>
+        <div class="card"><h4>MW 負責</h4><p>證據取捨、醫學解讀、利益-風險立場、最終定稿。</p></div>
+      </div>
+      <div class="callout"><strong>最小可行工作流：</strong> Intake → Plan → Draft → Audit → Cross-check → Refine</div>
+      <aside class="notes">這套流程的重點是把可重複工作交給 Agent，把需要專業判斷的工作保留給 MW、SME 和統計師。</aside>
+    </section>
+
+    <section class="title" data-background-color="#f4f8f9">
+      <div class="eyebrow">Start small. Verify every claim.</div>
+      <h1>先選一個章節，<br><span class="teal">今天就開始。</span></h1>
+      <p class="lead">建議從 CSR 結果或安全性摘要開始，建立第一個可重複的 Agent 工作流。</p>
+      <p class="sub">按空白鍵或方向鍵翻頁｜按 S 查看講者備註｜網址加上 ?print-pdf 可列印成 PDF</p>
+    </section>
+
+  </div>
+  <div class="footer">HIRO EDGE · MW AGENT WORKFLOW</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
+<script>
+Reveal.initialize({
+  hash: true,
+  slideNumber: 'c/t',
+  transition: 'slide',
+  transitionSpeed: 'default',
+  controls: true,
+  progress: true,
+  center: false,
+  width: 1280,
+  height: 720,
+  margin: 0.04,
+  plugins: [RevealNotes, RevealHighlight, RevealMath]
+});
+</script>
+<!-- PDF Export: Open in Chrome, append ?print-pdf to URL, then Ctrl+P → Save as PDF -->
+</body>
+</html>
