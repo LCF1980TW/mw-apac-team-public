@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>客户资料接收与锁定标准作业程序 (SOP)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
+<style>
+  :root {
+    --r-heading-font: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+    --r-main-font: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+    --r-heading-color: #A02746; /* HiRO 桃花色 / Deep Rose */
+    --r-link-color: #A02746;
+    --r-selection-background-color: rgba(160, 39, 70, 0.2);
+  }
+  .reveal .slides section {
+    text-align: left;
+    padding: 20px 40px;
+  }
+  .reveal h1, .reveal h2, .reveal h3 {
+    text-align: center;
+    font-family: var(--r-heading-font);
+    font-weight: 700;
+  }
+  .reveal h1 {
+    font-size: 2.2em;
+    color: #A02746; /* HiRO 桃花色 */
+  }
+  .reveal h2 {
+    font-size: 1.6em;
+    color: #A02746;
+    border-bottom: 3px solid #A02746;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+  }
+  .reveal h3 {
+    font-size: 1.2em;
+    color: #0A0E1A;
+  }
+  .highlight {
+    color: #A02746; /* 桃花色高亮 */
+    font-weight: bold;
+  }
+  .highlight-blue {
+    color: #0A0E1A;
+    font-weight: bold;
+  }
+  .callout {
+    background: #FAFAF7; /* Paper background */
+    border-left: 5px solid #A02746; /* 桃花色边框 */
+    padding: 15px 20px;
+    margin: 15px 0;
+    border-radius: 4px;
+    font-size: 0.85em;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+  .callout-warning {
+    background: #fdf6ec;
+    border-left: 5px solid #b45309; /* signalWarning */
+    padding: 15px 20px;
+    margin: 15px 0;
+    border-radius: 4px;
+    font-size: 0.85em;
+  }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+  }
+  .three-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    align-items: stretch;
+  }
+  .card {
+    background: #FAFAF7;
+    border: 1px solid #E2E5EA;
+    border-radius: 6px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  .card-header {
+    font-weight: bold;
+    color: #A02746; /* 桃花色 */
+    border-bottom: 2px solid #A02746;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    font-size: 0.9em;
+  }
+  .card-body {
+    font-size: 0.75em;
+    line-height: 1.5;
+    color: #475569;
+  }
+  table {
+    font-size: 0.65em;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  th {
+    background: #A02746; /* 桃花色 */
+    color: white;
+    padding: 8px 10px;
+    font-weight: bold;
+    text-align: left;
+  }
+  td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #E2E5EA;
+    color: #1F2937;
+  }
+  tr:nth-child(even) td {
+    background: #F1F3F5;
+  }
+  .footer-logo {
+    position: fixed;
+    bottom: 1em;
+    right: 1.5em;
+    font-size: 0.5em;
+    opacity: 0.6;
+    font-weight: bold;
+    color: #A02746; /* 桃花色 */
+    z-index: 10;
+  }
+  ol, ul {
+    font-size: 0.85em;
+    line-height: 1.6;
+    color: #1F2937;
+  }
+  li {
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- ═══════════════ Slide 1: Title Slide ═══════════════ -->
+    <section data-background-color="#A02746">
+      <div style="text-align: center; margin-top: 50px;">
+        <h1 style="color: white; border: none; font-size: 2.4em; margin-bottom: 10px;">客户资料接收与锁定</h1>
+        <h2 style="color: #FAFAF7; border: none; font-size: 1.4em; margin-bottom: 30px; opacity: 0.9;">标准作业程序 (SOP) / Standard Operating Procedure</h2>
+        <p style="color: rgba(255,255,255,0.9); font-size: 0.9em; margin-top: 50px;">
+          <strong>核心黄金法则：先锁定资料与证据，再开始写作；不要拿到文件后立即起草。</strong>
+        </p>
+        <p style="color: rgba(255,255,255,0.6); font-size: 0.6em; margin-top: 60px;">
+          医学撰写部 · Clinical Science & Medical Affairs &nbsp;·&nbsp; 2026年7月
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════════ Slide 2: Agenda ═══════════════ -->
+    <section>
+      <h2>议程 / Agenda</h2>
+      <div class="two-col">
+        <div>
+          <ol style="font-size: 0.75em;">
+            <li>核心原则：先锁后写</li>
+            <li>步骤一：明确任务边界</li>
+            <li>步骤二：建立资料清单</li>
+            <li>步骤三：资料分层管理</li>
+            <li>步骤四：建立数据锁定表</li>
+            <li>步骤五：建立缺口与冲突清单</li>
+          </ol>
+        </div>
+        <div>
+          <ol style="font-size: 0.75em;" start="7">
+            <li>步骤六：开展外部证据检索</li>
+            <li>步骤七：制定计划与影响矩阵</li>
+            <li>步骤八：结构化文件起草</li>
+            <li>步骤九：双语翻译与母语润色</li>
+            <li>步骤十：交付前三维质量控制</li>
+            <li>启动指令与核心自查问卷</li>
+          </ol>
+        </div>
+      </div>
+      <aside class="notes">
+        大家好，今天我们将梳理客户资料接收与锁定的标准作业程序。整体工作流共分十步，覆盖了从接收资料到最终交付的完整闭环。
+      </aside>
+    </section>
+
+    <!-- ═══════════════ Slide 3: Golden Rule ═══════════════ -->
+    <section>
+      <h2>黄金法则：先锁后写 / Golden Rule</h2>
+      <div class="two-col" style="margin-top: 20px;">
+        <div class="callout">
+          <h3 style="text-align:left; color:#A02746; margin-top:0;"><strong>规范做法：先鎖後寫</strong></h3>
+          <p>拿到客户资料后，必须通过建立清单、分层和数据锁定表来<span class="highlight">锁定事实</span>，明确数据缺口，再规划写作逻辑。</p>
+          <p><small>✓ 确保源数据可追溯，减少后期由于版本或逻辑不一致导致的反复修改。</small></p>
+        </div>
+        <div class="callout-warning">
+          <h3 style="text-align:left; color:#b45309; margin-top:0;"><strong>高危做法：立即起草</strong></h3>
+          <p>直接阅读后立即起草文档。这极易导致：</p>
+          <ul>
+            <li>混用过期版本数据</li>
+            <li>解构数据之间的逻辑冲突</li>
+            <li>在信息不全时盲目进行“合理推断”</li>
+          </ul>
+        </div>
+      </div>
+      <aside class="notes">
+        “先锁后写”是保证合规与效率的基石。绝大多数返工都是因为起草阶段对数据来源不明确、直接从微信或邮件提取零散数字导致的。
+      </aside>
+    </section>
+
+    <!-- ═══════════════ Slide 4: Step 1 ═══════════════ -->
+    <section>
+      <h2>1. 明确任务边界 / Identify Boundary</h2>
+      <p style="font-size: 0.9em; margin-bottom: 20px;">在开始任何实质性阅读前，首要任务是定位并<span class="highlight">锚定交付目标与合规管辖范围</span>：</p>
+      <ul>
+        <li class="fragment"><strong>项目基本信息</strong>：确认项目代号、适应症类别（如实体瘤/血液肿瘤）、当前临床开发阶段。</li>
+        <li class="fragment"><strong>目标文件类型</strong>：明确本次撰写的目标，如临床试验方案（Protocol）、研究者手册（IB）、研究报告（CSR）、知情同意书（ICF）等。</li>
+        <li class="fragment"><strong>监管管辖辖区</strong>：确认提交的监管机构，如NMPA、FDA、EMA或TGA，这直接决定了模板规范与合规检查标准。</li>
+        <li class="fragment"><strong>缺失信息标记</strong>：如有信息不全，必须使用标准占位符标记：
+          <div style="font-family: monospace; background:#F1F3F5; padding: 5px 15px; margin-top: 5px; border-radius: 4px; display: inline-block; font-size: 0.85em;">
+            [待确认：目标章节] &nbsp;&nbsp;&nbsp;&nbsp; [待确认：最新数据截止日期]
+          </div>
+        </li>
+      </ul>
+      <aside class="notes">
+        首先，我们要确定监管管辖区，因为不同国家的申报指南有很大差异。如果目标不明确，要在第一时间采用[待确认]格式打上标记。
+      </aside>
+    </section>
+
+    <!-- ═══════════════ Slide 5: Step 2 ═══════════════ -->
+    <section>
+      <h2>2. 建立资料清单 / Source Manifest</h2>
+      <p style="font-size:0.85em;">在提取数据前，对客户提供的所有文件建立结构化的<span class="highlight">源文件清单（Source Manifest）</span>，防范版本混乱：</p>
+      
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 8%">ID</th>
+            <th style="width: 30%">文件名</th>
+            <th style="width: 12%">文件类型</th>
+            <th style="width: 15%">版本与日期</th>
+            <th style="width: 15%">覆盖内容</th>
+            <th style="width: 12%">确切页码/定位</th>
+            <th style="width: 8%">状态</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>SRC01</td>
+            <td>Protocol_v2.0_2026-06-07.pdf</td>
+            <td>临床试验方案</td>
+            <td>v2.0 (2026-06-07)</td>
+            <td>入排标准、主要终点</td>
+            <td>Section 4, Page 12</td>
+            <td>已锁定</td>
+          </tr>
+          <tr>
+            <td>SRC02</td>
+            <td>Safety_Data_Table_C3_v1.xlsx</td>
+            <td>临床安全性Excel</td>
+            <td>v1.0 (2026-07-01)</td>
+            <td>AE/SAE汇总数据</td>
+            <td>Sheet: Summary, B5:F20</td>
+            <td>已锁定</td>
+          </tr>
+          <tr>
+            <td>SRC03</td>
+            <td>Draft_IB_v0.5_CN.docx</td>
+            <td>草稿版研究者手册</td>
+            <td>v0.5 (2026-05-15)</td>
+            <td>非临床PK数据</td>
+            <td>Section 5.2, Page 45</td>
+            <td><span class="highlight">待确认</span></td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div class="callout" style="margin-top: 15px; font-size: 0.75em;">
+        <strong>注意</strong>：必须主动识别并标记重复文件、历史旧版本，以及文件名相似但内容不同的“疑似冲突文件”。
+      </div>
+      <aside class="notes">
+        建立清单的好处是版本受控。我们必须准确记录每个文件来源 and 定位，甚至具体到Excel的单元格坐标。
+      </aside>
+    </section>
+
+    <!-- ═══════════════ Slide 6: Step 3 ═══════════════ -->
+    <section>
+      <h2>3. 资料分层管理 / Data Stratification</h2>
+      <p style="font-size:0.85em; margin-bottom: 20px;">写入监管文件的所有事实均需进行<span class="highlight">证据分层</span>，拒绝来源模糊的混杂描述：</p>
+      
+      <div class="three-col">
+        <div class="card">
+          <div class="card-header">1. 申办方确认事实<br>(Sponsor-confirmed)</div>
+          <div class="card-body">
+            <strong>定义</strong>：客户直接提供并明确签字确认的临床数据、方案设计或统计结论。<br><br>
+            <strong>处理</strong>：作为<strong>核心事实</strong>引用，但在引用时必须标注对应的 Source ID。
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-header">2. 外部证据<br>(External-evidence)</div>
+          <div class="card-body">
+            <strong>定义</strong>：公开发表的文献、指导原则、竞争品ClinicalTrials.gov登记信息或FDA/NMPA数据库记录。<br><br>
+            <strong>处理</strong>：作为<strong>支持性背景或对照</strong>，必须在文后列出完整的参考文献或引文。
+          </div>
+        </div>
+        
+        <div class="card" style="border-color: #9f1239;">
+          <div class="card-header" style="color: #9f1239; border-color: #9f1239;">3. 逻辑推断<br>(Inference)</div>
+          <div class="card-body">
+            <strong>定义</strong>：基于不完整的数据，由AI助手或医学撰写员自行推算、建议或评估的结论。<br><br>
+            <strong>处理</strong>：<strong>严禁直接作为事实写入</strong>。必须使用“建议/推测”表述并明确标记 `[待确认]` 供申办方决定。
+          </div>
+        </div>
+      </div>
+      <aside class="notes">
+        这三层分级能够从根源上杜绝“数据幻觉”。逻辑推断绝对不能作为最终结论写入，必须由申办方签字盖章确认。
+      </aside>
+    </section>
+
+    <!-- ═══════════════ Slide 7: Step 4 ═══════════════ -->
+    <section>
+      <h2>4. 建立数据锁定表 / Data Lock Table</h2>
+      <p style="font-size:0.85em; margin-bottom: 10px;">针对以下关键数据，在起草前必须完成<span class="highlight">“数字 - 来源文件 - 确切位置”</span>的硬性绑定：</p>
+      
+      <div class="two-col">
+        <div>
+          <ul style="font-size: 0.7em;">
+            <li><strong>方案设计要素</strong>：样本量大小、给药剂量级别、给药周期与给药方案（Regimen）。</li>
+            <li><strong>试验核心逻辑</strong>：主要疗效终点（Primary Endpoints）、关键入选/排除标准（I/E Criteria）。</li>
+            <li><strong>安全性与PK</strong>：已发生的严重不良事件（SAE）、试验中止事件、关键PK/PD参数。</li>
+            <li><strong>时间与版本</strong>：数据截止日期（Data Cut-off Date）、方案版本号及发布日期。</li>
+          </ul>
+        </div>
+        
+        <div class="callout" style="margin-top: 0;">
+          <strong style="font-size: 0.9em; color:#A02746;">绑定示例：</strong>
+          <table style="font-size:0.7em; margin-top:5px;">
+            <thead>
+              <tr><th>参数项</th><th>数据值</th><th>Source定位</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>样本量</td><td>N = 45</td><td>SRC01, Sec 9.1, p82</td></tr>
+              <tr><td>给药剂量</td><td>10 mg/kg</td><td>SRC01, Sec 5.3, p40</td></tr>
+              <tr><td>主要终点</td><td>ORR (RECIST 1.1)</td><td>SRC01, Sec 3.2, p24</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <aside class="notes">
+        数据锁定表是撰写过程的“数据真理库”。我们必须在动笔之前，把所有关键的量化指标和定位写进这张表里，避免在撰写时去反复翻找。
+      </aside>
+    </section>
+
+    <!-- ═══════════════ Slide 8: Step 5 ═══════════════ -->
+    <section>
+      <h2>5. 缺口与冲突清单 / Gap Log</h2>
+      <p style="font-size:0.85em; margin-bottom: 15px;">在核对资料时若发现逻辑或数据问题，<span class="highlight">切忌自行进行临床合理化或妥协处理</span>。应立即登记在案：</p>
+      
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 25%">冲突/缺口描述</th>
+            <th style="width: 15%">风险等级</th>
+            <th style="width: 20%">受影响章节</th>
+            <th style="width: 25%">需客户确认/提供的事项</th>
+            <th style="width: 15%">状态</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Protocol宣称主要终点为PFS，但统计计划(SAP)表述为ORR</td>
+            <td><span style="color:#9f1239; font-weight:bold;">高风险</span></td>
+            <td>Protocol Sec 3.0 / CSR Sec 9.0</td>
+            <td>请确认以何者为准，并提供终版签字意见。</td>
+            <td>待解决</td>
+          </tr>
+          <tr>
+            <td>Excel源数据缺失 Cycle 3 安全性总结，仅有C1和C2</td>
+            <td><span style="color:#b45309; font-weight:bold;">中风险</span></td>
+            <td>CSR Sec 12.0 / IB Sec 6.2</td>
+            <td>需补充提供 Cycle 3 的AE汇总统计文件。</td>
+            <td>待解决</td>
+          </tr>
+          <tr>
+            <td>引用的指导原则在今年6月已更新，旧版本依然被引用</td>
+            <td><span style="color:#475569; font-weight:bold;">低风险</span></td>
+            <td>Protocol 参考文献</td>
+            <td>建议将旧指导原则更新为最新发布版。</td>
+            <td>待解决</td>
+          </tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        如果发现不同来源的文件之间有矛盾，我们一定不能做和事佬，不能替客户做选择，必须要详细列出清单，呈报给客户做最终决策。
+      </aside>
+    </section>
+
+    <!-- ═══════════════ Slide 9: Step 6 ═══════════════ -->
+    <section>
+      <h2>6. 外部证据检索 / External Research</h2>
+      <p style="font-size:0.85em; margin-bottom: 15px;">当数据存在事实缺口，或需要进行竞争性/背景研究时，应在锁定检索来源的前提下开展以下检索：</p>
+      
+      <div class="two-col">
+        <div>
+          <h3 style="text-align:left; font-size:1em; color:#A02746;"><strong>检索维度与数据源</strong></h3>
+          <ul style="font-size: 0.7em;">
+            <li><strong>先例试验与方案设计</strong>：检索 ClinicalTrials.gov 等试验库，寻找同类靶点已上市或在研同类产品的试验设计和评价标准作为参考。</li>
+            <li><strong>监管指导原则与法规</strong>：从 FDA, EMA, NMPA (CDE) 检索最新的靶点特异性或疾病特异性研发指南。</li>
+            <li><strong>学术与安全性数据库</strong>：利用医学文献检索工具对背景机理、不良反应谱（如CRS, 神经毒性等）进行溯源。</li>
+          </ul>
+        </div>
+        
+        <div class="callout" style="margin-top:0;">
+          <h3 style="text-align:left; font-size:1em; color:#A02746; margin-top:0;"><strong>合规存底要求：</strong></h3>
+          <p style="font-size:0.85em; line-height:1.4;">外部检索获取的所有资料必须强制记录以下追溯信息：</p>
+          <ul style="font-size: 0.75em;">
+            <li>具体检索数据源与使用的关键词</li>
+            <li>资料的版本/发布日期</li>
+            <li>文章的唯一标识符（如 DOI / NCT 号）</li>
+            <li>本方人员的检索与访问时间</li>
+          </ul>
+        </div>
+      </div>
+      <aside class="notes">
+        做外部检索时，不要局限于搜索引擎。我们需要科学、规范地记录检索路径和访问日期，确保整个情报链条可以被追溯和验证。
+      </aside>
+    </section>
+
+    <!-- ═══════════════ Slide 10: Step 7 ═══════════════ -->
+    <section>
+      <h2>7. 写作计划与影响矩阵 / Impact Matrix</h2>
+      <p style="font-size:0.85em; margin-bottom: 10px;">在动笔前，制定明确的章节大纲，并分析多文档之间的联动影响，建立<span class="highlight">变更关联矩阵</span>：</p>
+      
+      <table style="font-size: 0.6em;">
+        <thead>
+          <tr>
+            <th>变更源头文件</th>
+            <th>变更类型</th>
+            <th>受影响的下游文档与对应章节 (需同步修改)</th>
+            <th>跟进优先级</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>临床试验方案 (Protocol)</strong></td>
+            <td>主要有效性终点变更</td>
+            <td>1. <strong>研究者手册 (IB)</strong> 第6章：更新疗效评价逻辑<br>2. <strong>临床开发计划 (CDP)</strong>：重新校准开发里程碑<br>3. <strong>研究报告 (CSR)</strong> 第9章：同步定义分析集</td>
+            <td><span style="color:#9f1239; font-weight:bold;">P1 (立即同步)</span></td>
+          </tr>
+          <tr>
+            <td><strong>临床试验方案 (Protocol)</strong></td>
+            <td>剂量递增方案/给药剂量变更</td>
+            <td>1. <strong>研究者手册 (IB)</strong> 第4-5章：更新剂量暴露与风险描述<br>2. <strong>知情同意书 (ICF)</strong>：重新撰写剂量及对应安全风险 disclosure<br>3. <strong>风险管理计划 (RMP)</strong>：增补剂量限制性毒性防控手段</td>
+            <td><span style="color:#9f1239; font-weight:bold;">P1 (立即同步)</span></td>
+          </tr>
+          <tr>
+            <td><strong>研究者手册 (IB)</strong></td>
+            <td>新增非临床安全性毒性结果</td>
+            <td>1. <strong>临床试验方案 (Protocol)</strong>：更新试验终止/暂停标准<br>2. <strong>知情同意书 (ICF)</strong>：增加新的毒性反应告知</td>
+            <td><span style="color:#b45309; font-weight:bold;">P2 (推荐同步)</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        一份监管文档的改动，会像多米诺骨牌一样影响其他文档。我们必须在动笔时就把联动的影响找出来，避免只改了Protocol却忘了更新ICF。
+      </aside>
+    </section>
+
+    <!-- ═══════════════ Slide 11: Step 8 ═══════════════ -->
+    <section>
+      <h2>8. 结构化起草 / Structured Drafting</h2>
+      <p style="font-size:0.85em; margin-bottom: 20px;">使用对应的专业文档标准撰写模板。在起草过程中，医学撰写员应时刻遵守：</p>
+      
+      <div class="two-col">
+        <div class="card">
+          <div class="card-header">客观中立原则 / Neutrality</div>
+          <div class="card-body">
+            使用客观、非人称、学术化第三人称叙述。不允许出现 “我们 (we)”、“我 (I)” 或带主观感情色彩的修饰性词汇。<br>
+            <span class="highlight">避免口语化描述</span>，例如将“这个药安全性很好”规范撰写为“截至数据截止日，受试者对本品的耐受性良好，未观察到DLT”。
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-header">一致性与严谨性 / Rigor</div>
+          <div class="card-body">
+            所有医学和统计术语在第一次出现时，必须使用<strong>全称 + 缩写</strong>。统一全文命名法（例如：RECIST 1.1, CTCAE v5.0）。<br>
+            <strong>严禁夸大结论</strong>，不得把临床前或早期试验的推测性结论，写成已证实的普遍事实。
+          </div>
+        </div>
+      </div>
+      <aside class="notes">
+        起草时必须使用规范的医学学术语言，坚决杜绝带有主观偏向的形容词。比如安全性好不好，要用数据和客观术语如“耐受性良好”来支撑。
+      </aside>
+    </section>
+
+    <!-- ═══════════════ Slide 12: Step 9 ═══════════════ -->
+    <section>
+      <h2>9. 翻译与母语化润色 / Translation & Polish</h2>
+      <p style="font-size:0.85em; margin-bottom: 10px;">对于跨国申报或中英双语项目，翻译及润色阶段需采取如下渐进式流程：</p>
+      
+      <div style="position: relative; padding: 15px; background: #F1F3F5; border-radius: 6px; border: 1px solid #E2E5EA; margin-top: 15px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; text-align: center; font-size: 0.75em; font-weight: bold;">
+          <div style="width: 20%; background: #A02746; color: white; padding: 10px; border-radius: 4px;">1. 机器翻译<br><small>Machine Trans</small></div>
+          <div style="font-size: 1.5em; color: #A02746;">➔</div>
+          <div style="width: 22%; background: #A02746; color: white; padding: 10px; border-radius: 4px;">2. 锁定专业术语润色<br><small>Lock Glossary & Polish</small></div>
+          <div style="font-size: 1.5em; color: #A02746;">➔</div>
+          <div style="width: 20%; background: #A02746; color: white; padding: 10px; border-radius: 4px;">3. 数字/数据核验<br><small>Verify Numbers</small></div>
+          <div style="font-size: 1.5em; color: #A02746;">➔</div>
+          <div style="width: 22%; background: #0A0E1A; color: white; padding: 10px; border-radius: 4px;">4. 最终纯语言版本<br><small>Target Only Version</small></div>
+        </div>
+      </div>
+      
+      <ul style="font-size: 0.75em; margin-top: 20px;">
+        <li><strong>术语库一致性</strong>：翻译后需重点审核高危词汇（如不良事件名称、靶点描述），必须与既有中英医学名词词汇表保持100%一致。</li>
+        <li><strong>先双语，后单语</strong>：推荐在编辑和核对阶段保留双语对照版以进行数据稽查，在确认无误后再一键输出纯中文或纯英文的最终版。</li>
+      </ul>
+      <aside class="notes">
+        翻译不仅仅是语言的切换，更是数据准确性的二次稽查。强烈建议在撰写和QC阶段保留双语版本，这样能非常容易地发现数字和逻辑翻译中的错漏。
+      </aside>
+    </section>
+
+    <!-- ═══════════════ Slide 13: Step 10 ═══════════════ -->
+    <section>
+      <h2>10. 交付前三维质量控制 / Pre-delivery QC</h2>
+      <p style="font-size:0.85em; margin-bottom: 15px;">文件正式交付给客户或监管机构前，必须在后台执行这三个维度的严格审查：</p>
+      
+      <div class="three-col">
+        <div class="card">
+          <div class="card-header">1. 引文核验 (Citation QC)</div>
+          <div class="card-body">
+            验证参考文献中所有 DOI、PMID、NCT 等身份标识符的真实性。<br><br>
+            确保引用的学术结论和临床前数据与源文献的研究内容完全对应。
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-header">2. 单文档质量 (Intra-doc QC)</div>
+          <div class="card-body">
+            检查单份文档内前后数据的一致性。<br><br>
+            例如：Protocol正文中的“安全分析集 N=40”与附录SOA表格、正文统计章节的数字必须完全匹配。
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-header">3. 跨文档一致性 (Cross-check)</div>
+          <div class="card-body">
+            开展跨文件对比（Cross-document Check）。<br><br>
+            对 Protocol 与 IB、Protocol 与 ICF 之间的数据传递和名词统一进行最后一轮红队审查。
+          </div>
+        </div>
+      </div>
+      <aside class="notes">
+        最后的QC阶段分为三维：引文核验、文件内部一致性检查和跨文档一致性检查。这三道防线能过滤掉大部分由版本更新滞后带来的数据硬伤。
+      </aside>
+    </section>
+
+    <!-- ═══════════════ Slide 14: Starter Command ═══════════════ -->
+    <section>
+      <h2>启动指令与核心标准 / Starter Command</h2>
+      <div class="two-col" style="margin-top: 10px;">
+        <div class="callout" style="margin-top: 0; font-size: 0.8em;">
+          <h3 style="text-align: left; margin-top: 0; color: #A02746;"><strong>项目启动接收命令 / Intake Command</strong></h3>
+          <p>每次拿到资料，首先通过后台管理模块输入以下信息结构：</p>
+          <pre style="font-size: 0.7em; background: #F1F3F5; padding: 10px; border-radius: 4px; border: 1px solid #E2E5EA;"><code>
+项目名称：
+目标文件类型：
+监管辖区：
+目标撰写章节：
+客户提供资料截止日期：
+是否需外部检索：
+是否需翻译/多语言：
+交付格式：
+          </code></pre>
+        </div>
+        
+        <div>
+          <h3 style="text-align: left; margin-top: 0; color: #A02746; font-size: 1.1em;"><strong>核心自查问卷：四大终极发问</strong></h3>
+          <p style="font-size: 0.8em;">每一个最终写入文档的数据和结论，医学撰写员都应能明确回答这四个问题：</p>
+          <ol style="font-size: 0.7em;">
+            <li><strong>来源是什么？</strong> (精确到哪份输入材料)</li>
+            <li><strong>版本是什么？</strong> (该材料的版本和日期是否最新)</li>
+            <li><strong>定位在哪里？</strong> (确切的文件页码、章节或Excel单元格)</li>
+            <li><strong>是否已确认？</strong> (申办方是否已签字，是否为未证实的推论)</li>
+          </ol>
+        </div>
+      </div>
+      <aside class="notes">
+        在项目开展的最初，请使用这个标准的启动指令收集输入信息。在提交文件前，我们要拿这四个自查问题对关键数据逐一核实。
+      </aside>
+    </section>
+
+    <!-- ═══════════════ Slide 15: Q&A / End ═══════════════ -->
+    <section data-background-color="#A02746" style="text-align: center;">
+      <div style="margin-top: 150px;">
+        <h1 style="color: white; border: none; font-size: 2.2em;">谢谢 / Thank You</h1>
+        <p style="color: rgba(255,255,255,0.7); font-size: 1em; margin-top: 20px;">QA & 讨论环节 / Question & Answer Session</p>
+        <p style="color: rgba(255,255,255,0.5); font-size: 0.6em; margin-top: 80px;">
+          <!-- PDF Export: Open in Chrome, append ?print-pdf to URL, then Ctrl+P → Save as PDF -->
+          * 打印提示：在 Chrome 中打开，于 URL 末尾加 <code>?print-pdf</code> 后按 Ctrl+P，可直接导出为 PDF。
+        </p>
+      </div>
+    </section>
+
+  </div><!-- /.slides -->
+  <div class="footer-logo">CSMA · 客户资料接收与锁定 SOP</div>
+</div><!-- /.reveal -->
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
+<script>
+Reveal.initialize({
+  hash: true,
+  slideNumber: 'c/t',
+  transition: 'slide',
+  transitionSpeed: 'default',
+  controls: true,
+  progress: true,
+  center: false,
+  width: 1280,
+  height: 720,
+  margin: 0.04,
+  plugins: [ RevealNotes, RevealHighlight, RevealMath ]
+});
+</script>
+</body>
+</html>
