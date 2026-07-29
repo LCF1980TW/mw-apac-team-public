@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>AI-Enabled Medical Writing Guideline — HiRO Edge Light Style</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FAFAF7;
+    --rose: #A02746;
+    --rose-light: rgba(160, 39, 70, 0.05);
+    --rose-border: rgba(160, 39, 70, 0.25);
+    --ink100: #0A0E1A;
+    --ink80: #1F2937;
+    --ink60: #475569;
+    --ink40: #94A3B8;
+    --stone20: #E2E5EA;
+    --stone10: #F1F3F5;
+    --pureWhite: #FFFFFF;
+    --teal: #0F766E;
+    
+    --r-background-color: var(--paper);
+    --r-main-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --r-heading-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --r-main-color: var(--ink80);
+    --r-heading-color: var(--ink100);
+    --r-link-color: var(--rose);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink80);
+    font-family: var(--r-main-font);
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .reveal {
+    font-family: var(--r-main-font);
+  }
+
+  .reveal .slides section {
+    text-align: left;
+    padding: 2em 2.4em 1.4em 2.4em;
+    box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  /* Slide Typography */
+  .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+    text-transform: none;
+    letter-spacing: -0.025em;
+    color: var(--ink100);
+    font-weight: 600;
+  }
+
+  .reveal h1 { font-size: 2.2em; line-height: 1.15; margin-bottom: 0.3em; }
+  .reveal h2 { font-size: 1.45em; margin-top: 0; margin-bottom: 0.4em; border-bottom: none; }
+  .reveal h3 { font-size: 1.05em; color: var(--ink80); margin-bottom: 0.4em; }
+
+  .meta-tag {
+    font-size: 0.65em;
+    font-weight: 700;
+    color: var(--rose);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.3em;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+  .meta-tag::before {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 3px;
+    background-color: var(--rose);
+    border-radius: 1px;
+  }
+
+  .header-rule {
+    width: 100%;
+    height: 1px;
+    background-color: var(--stone20);
+    margin-bottom: 1em;
+    flex-shrink: 0;
+  }
+
+  /* Persistent Header & Footer Frames */
+  .slide-header-meta {
+    position: absolute;
+    top: 18px;
+    right: 36px;
+    font-size: 0.55em;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--ink40);
+    z-index: 10;
+  }
+
+  .footer-frame {
+    position: absolute;
+    bottom: 18px;
+    left: 36px;
+    right: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    border-top: 1px solid var(--stone20);
+    z-index: 10;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.55em;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--ink60);
+  }
+
+  .footer-brand .brand-bar {
+    width: 4px;
+    height: 12px;
+    background-color: var(--rose);
+  }
+
+  .footer-page {
+    font-size: 0.55em;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--ink40);
+  }
+
+  /* Auto-adapting Flexible Layout Utilities */
+  .grid-auto-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.3em;
+    width: 100%;
+  }
+
+  .grid-auto-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.1em;
+    width: 100%;
+  }
+
+  .card {
+    background: var(--pureWhite);
+    border: 1px solid var(--stone20);
+    border-radius: 8px;
+    padding: 1.1em 1.3em;
+    box-shadow: 0 4px 16px rgba(10,14,26,0.03);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-rose {
+    background: var(--pureWhite);
+    border: 1px solid var(--stone20);
+    border-left: 4px solid var(--rose);
+    border-radius: 8px;
+    padding: 1.1em 1.3em;
+    box-shadow: 0 4px 16px rgba(10,14,26,0.03);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-teal {
+    background: var(--pureWhite);
+    border: 1px solid var(--stone20);
+    border-left: 4px solid var(--teal);
+    border-radius: 8px;
+    padding: 1.1em 1.3em;
+    box-shadow: 0 4px 16px rgba(10,14,26,0.03);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-title {
+    font-size: 0.92em;
+    font-weight: 600;
+    color: var(--ink100);
+    margin-bottom: 0.5em;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  .card-list {
+    margin: 0;
+    padding-left: 1.2em;
+    font-size: 0.74em;
+    color: var(--ink60);
+    line-height: 1.6;
+  }
+
+  .card-list li {
+    margin-bottom: 0.35em;
+  }
+
+  .callout-box {
+    background: var(--rose-light);
+    border: 1px solid var(--rose-border);
+    border-left: 4px solid var(--rose);
+    border-radius: 6px;
+    padding: 0.9em 1.2em;
+    margin-top: auto;
+    width: 100%;
+  }
+
+  .callout-text {
+    font-size: 0.82em;
+    font-weight: 600;
+    color: var(--ink100);
+    line-height: 1.45;
+  }
+
+  .golden-quote {
+    font-size: 1.25em;
+    font-weight: 600;
+    color: var(--ink100);
+    line-height: 1.35;
+    border-left: 4px solid var(--rose);
+    padding-left: 0.8em;
+    margin: 0.6em 0;
+  }
+
+  /* Cover Slide Custom Styling */
+  .cover-section {
+    background-color: var(--ink100) !important;
+    color: #FFFFFF !important;
+  }
+
+  .cover-section .meta-tag {
+    color: var(--rose);
+  }
+
+  .cover-section h1 {
+    color: #FFFFFF !important;
+    font-size: 2.5em;
+    font-weight: 700;
+  }
+
+  .cover-subtitle {
+    color: var(--ink40);
+    font-size: 1.1em;
+    margin-bottom: 1.5em;
+    font-weight: 400;
+  }
+
+  .cover-banner {
+    display: inline-block;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-left: 4px solid var(--rose);
+    padding: 0.8em 1.5em;
+    border-radius: 6px;
+    font-size: 0.95em;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-bottom: 2em;
+  }
+
+  .cover-footer {
+    font-size: 0.7em;
+    color: var(--ink40);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 1em;
+    margin-top: auto;
+  }
+
+  /* Section Divider Styling */
+  .divider-section {
+    background-color: #0A0E1A !important;
+    color: #FFFFFF !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .divider-section h2 {
+    color: #FFFFFF !important;
+    font-size: 2.2em;
+    margin-bottom: 0.2em;
+  }
+  .divider-sub {
+    color: var(--rose);
+    font-size: 1.05em;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  .badge-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 6px;
+    background-color: var(--rose);
+    color: #FFFFFF;
+    border-radius: 50%;
+    font-size: 0.7em;
+    font-weight: 700;
+  }
+
+  /* Responsive Media Queries for small viewports */
+  @media (max-width: 768px) {
+    .reveal .slides section { padding: 1.2em 1.5em; }
+    .grid-auto-2, .grid-auto-3 { grid-template-columns: 1fr; gap: 0.8em; }
+    .reveal h1 { font-size: 1.8em; }
+    .reveal h2 { font-size: 1.2em; }
+    .golden-quote { font-size: 1em; }
+  }
+</style>
+</head>
+<body>
+
+<div class="reveal">
+  <div class="slides">
+
+    <!-- ==================== SLIDE 1: COVER ==================== -->
+    <section class="cover-section" data-background-color="#0A0E1A">
+      <div class="meta-tag">HIRO MEDICAL WRITING GUIDELINE · V1.0</div>
+      <h1>AI-Enabled Medical Writing Guideline</h1>
+      <div class="cover-subtitle">Operationalizing Responsible AI in Regulatory & Clinical Document Development</div>
+      
+      <div class="cover-banner">
+        AI Accelerates. Humans Decide. Humans Own.
+      </div>
+      
+      <div class="cover-footer">
+        <strong>Harvest Integrated Research Organization (HiRO)</strong> &nbsp;·&nbsp; APAC Medical Writing Team
+      </div>
+      <aside class="notes">
+        Welcome to the English edition of the HiRO AI-Enabled Medical Writing Guideline presentation.
+        This deck outlines operational principles for combining AI speed with human medical expertise.
+      </aside>
+    </section>
+
+    <!-- ==================== SLIDE 2: AGENDA ==================== -->
+    <section>
+      <div class="slide-header-meta">CONFIDENTIAL</div>
+      <div class="meta-tag">OVERVIEW</div>
+      <h2>Agenda & Structure</h2>
+      <div class="header-rule"></div>
+      
+      <div class="grid-auto-2" style="margin-top: 0.5em;">
+        <div class="card-rose fragment">
+          <div class="card-title"><span class="badge-number">01</span> Executive Rationale & Core Principle</div>
+          <p style="font-size: 0.74em; color: var(--ink60); margin: 0;">AI rationale and the foundational slogan: "AI Accelerates. Humans Decide. Humans Own."</p>
+        </div>
+        <div class="card-rose fragment">
+          <div class="card-title"><span class="badge-number">02</span> The 6 Operational Principles</div>
+          <p style="font-size: 0.74em; color: var(--ink60); margin: 0.02, accountability, LLM selection, evidence, QC, & policy.</p>
+        </div>
+        <div class="card-rose fragment">
+          <div class="card-title"><span class="badge-number">03</span> Capability Matrix & Boundaries</div>
+          <p style="font-size: 0.74em; color: var(--ink60); margin: 0;">Delineating AI execution efficiency versus irreplaceable human medical judgment.</p>
+        </div>
+        <div class="card-rose fragment">
+          <div class="card-title"><span class="badge-number">04</span> Strategic Vision & Value Creation</div>
+          <p style="font-size: 0.74em; color: var(--ink60); margin: 0;">Strategic synthesis on how AI orchestration elevates professional value in clinical trials.</p>
+        </div>
+      </div>
+
+      <div class="footer-frame">
+        <div class="footer-brand"><div class="brand-bar"></div>HIRO · CONFIDENTIAL</div>
+        <div class="footer-page">02</div>
+      </div>
+      <aside class="notes">
+        Agenda outline covering background, 6 core principles, capability matrix, and strategic outlook.
+      </aside>
+    </section>
+
+    <!-- ==================== SLIDE 3: SECTION 1 DIVIDER ==================== -->
+    <section class="divider-section" data-background-color="#0A0E1A">
+      <div class="meta-tag">SECTION 01</div>
+      <h2>Core Principle</h2>
+      <div class="divider-sub">AI Accelerates. Humans Decide. Humans Own.</div>
+      <aside class="notes">Section 1 introduces the executive purpose and primary rule.</aside>
+    </section>
+
+    <!-- ==================== SLIDE 4: EXECUTIVE SUMMARY ==================== -->
+    <section>
+      <div class="slide-header-meta">CONFIDENTIAL</div>
+      <div class="meta-tag">SECTION 01 · RATIONALE</div>
+      <h2>Executive Rationale & Core Principle</h2>
+      <div class="header-rule"></div>
+
+      <div class="grid-auto-2">
+        <div class="card">
+          <div class="card-title">🎯 Operational Rationale</div>
+          <ul class="card-list">
+            <li><strong>Execution Accelerator:</strong> Artificial Intelligence is a powerful tool to enhance productivity, accelerate document drafting, and support QC review.</li>
+            <li><strong>Human Integrity:</strong> AI does NOT replace professional judgment, regulatory expertise, or final author accountability.</li>
+            <li><strong>Standardization:</strong> Establishes firm operational boundaries across HiRO Medical Writing operations.</li>
+          </ul>
+        </div>
+        <div class="card-rose">
+          <div class="card-title">⚖️ Foundational Golden Rule</div>
+          <div class="golden-quote">
+            AI Accelerates.<br>
+            Humans Decide.<br>
+            Humans Own.
+          </div>
+          <p style="font-size: 0.72em; color: var(--ink60); margin-top: 0.5em;">
+            AI supports efficiency and execution. Medical Writers remain fully responsible for scientific judgment, regulatory strategy, and final deliverables.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-frame">
+        <div class="footer-brand"><div class="brand-bar"></div>HIRO · CONFIDENTIAL</div>
+        <div class="footer-page">04</div>
+      </div>
+      <aside class="notes">
+        Key point: AI boosts execution speed, but humans hold 100% of scientific authority and decision ownership.
+      </aside>
+    </section>
+
+    <!-- ==================== SLIDE 5: SECTION 2 DIVIDER ==================== -->
+    <section class="divider-section" data-background-color="#0A0E1A">
+      <div class="meta-tag">SECTION 02</div>
+      <h2>The 6 Operational Principles</h2>
+      <div class="divider-sub">Human-Centric Regulatory Excellence</div>
+      <aside class="notes">Section 2 breaks down the 6 operational rules.</aside>
+    </section>
+
+    <!-- ==================== SLIDE 6: PRINCIPLE 1 ==================== -->
+    <section>
+      <div class="slide-header-meta">CONFIDENTIAL</div>
+      <div class="meta-tag">PRINCIPLE 01 / 06</div>
+      <h2>1. Human in the Loop</h2>
+      <div class="header-rule"></div>
+
+      <div class="grid-auto-2">
+        <div class="card-teal">
+          <div class="card-title">🤖 What AI May Assist</div>
+          <ul class="card-list">
+            <li>Initial draft generation & scaffolding</li>
+            <li>Scientific literature summarization</li>
+            <li>Data organization & structural formatting</li>
+            <li>Cross-document consistency checking</li>
+            <li>Quality control support & verification</li>
+          </ul>
+        </div>
+        <div class="card-rose">
+          <div class="card-title">🛡️ Mandatory Human Gate</div>
+          <ul class="card-list">
+            <li>Content shared directly with <strong>sponsors / clients</strong></li>
+            <li>Content included in <strong>regulated regulatory dossiers</strong></li>
+            <li>Content submitted for <strong>formal approval</strong></li>
+            <li>Content incorporated into <strong>final deliverables</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout-box">
+        <div class="callout-text">
+          🚨 Core Mandate: No AI-generated content shall be accepted or released without critical human evaluation.
+        </div>
+      </div>
+
+      <div class="footer-frame">
+        <div class="footer-brand"><div class="brand-bar"></div>HIRO · CONFIDENTIAL</div>
+        <div class="footer-page">06</div>
+      </div>
+      <aside class="notes">
+        Principle 1 establishes the mandatory human checkpoint before any AI material is shared or submitted.
+      </aside>
+    </section>
+
+    <!-- ==================== SLIDE 7: PRINCIPLE 2 ==================== -->
+    <section>
+      <div class="slide-header-meta">CONFIDENTIAL</div>
+      <div class="meta-tag">PRINCIPLE 02 / 06</div>
+      <h2>2. Human Owns the Outcome</h2>
+      <div class="header-rule"></div>
+
+      <div class="grid-auto-2">
+        <div class="card">
+          <div class="card-title">❌ What AI Is NOT</div>
+          <p style="font-size: 0.74em; color: var(--ink60); margin-bottom: 0.4em;">
+            AI is strictly a productivity tool. AI is <strong>NEVER</strong>:
+          </p>
+          <ul class="card-list">…735 tokens truncated…iv class="card-title">📄 Analysis & Extraction</div>
+          <ul class="card-list">
+            <li>Long-document parsing</li>
+            <li>Complex clinical data extraction</li>
+            <li>Cross-reference & audit trails</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">✍️ Synthesis & Writing</div>
+          <ul class="card-list">
+            <li>Scientific literature synthesis</li>
+            <li>Regulatory narrative drafting</li>
+            <li>Ideation & structured outline creation</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">🔍 Quality & Verification</div>
+          <ul class="card-list">
+            <li>Consistency & alignment audit</li>
+            <li>Medical terminology check</li>
+            <li>Grammar, tone & style verification</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout-box" style="margin-top: 0.8em;">
+        <div class="callout-text">
+          🎯 Selection Golden Rule: "Use the best model for the task, not one model for everything." Match LLM capability to task complexity.
+        </div>
+      </div>
+
+      <div class="footer-frame">
+        <div class="footer-brand"><div class="brand-bar"></div>HIRO · CONFIDENTIAL</div>
+        <div class="footer-page">08</div>
+      </div>
+      <aside class="notes">
+        Principle 3 encourages tool-task matching to maximize quality and output precision.
+      </aside>
+    </section>
+
+    <!-- ==================== SLIDE 9: PRINCIPLE 4 ==================== -->
+    <section>
+      <div class="slide-header-meta">CONFIDENTIAL</div>
+      <div class="meta-tag">PRINCIPLE 04 / 06</div>
+      <h2>4. Evidence Before Generation</h2>
+      <div class="header-rule"></div>
+
+      <div class="grid-auto-2">
+        <div class="card-teal">
+          <div class="card-title">✅ Approved Source Grounding</div>
+          <ul class="card-list">
+            <li>Approved study protocols & CSR documents</li>
+            <li>Sponsor-verified source documents & data</li>
+            <li>Peer-reviewed scientific literature</li>
+            <li>Applicable SOPs & ICH/FDA/EMA guidance</li>
+            <li>Verified trial data & clinical registries</li>
+          </ul>
+        </div>
+        <div class="card-rose">
+          <div class="card-title">🚫 Strictly Unacceptable Practices</div>
+          <ul class="card-list">
+            <li>❌ <strong>Fabricated data:</strong> Invented trial numbers</li>
+            <li>❌ <strong>Fabricated references:</strong> Hallucinated citations</li>
+            <li>❌ <strong>Invented regulations:</strong> Fake regulatory rules</li>
+            <li>❌ <strong>Unsupported claims:</strong> Speculative statements</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout-box">
+        <div class="callout-text">
+          🔍 Core Directive: Trust, but verify. Source information must always take absolute precedence over AI assumptions.
+        </div>
+      </div>
+
+      <div class="footer-frame">
+        <div class="footer-brand"><div class="brand-bar"></div>HIRO · CONFIDENTIAL</div>
+        <div class="footer-page">09</div>
+      </div>
+      <aside class="notes">
+        Principle 4 mandates absolute grounding in verified sources to eliminate AI hallucination risks.
+      </aside>
+    </section>
+
+    <!-- ==================== SLIDE 10: PRINCIPLE 5 ==================== -->
+    <section>
+      <div class="slide-header-meta">CONFIDENTIAL</div>
+      <div class="meta-tag">PRINCIPLE 05 / 06</div>
+      <h2>5. No AI Output Without Quality Control</h2>
+      <div class="header-rule"></div>
+
+      <p style="font-size: 0.75em; color: var(--ink60); margin-bottom: 0.6em;">
+        AI outputs must always be treated as working drafts requiring verification, never final deliverables. Assess three critical pillars:
+      </p>
+
+      <div class="grid-auto-3">
+        <div class="card-rose">
+          <div class="card-title">1️⃣ Factual Accuracy</div>
+          <ul class="card-list">
+            <li>Numerical data & tables</li>
+            <li>Statistical values & p-values</li>
+            <li>References & citations</li>
+            <li>Scientific statements</li>
+          </ul>
+        </div>
+        <div class="card-rose">
+          <div class="card-title">2️⃣ Consistency</div>
+          <ul class="card-list">
+            <li>Cross-document alignment</li>
+            <li>Medical terminology standards</li>
+            <li>Study design logic</li>
+            <li>Dosing & cohort fidelity</li>
+          </ul>
+        </div>
+        <div class="card-rose">
+          <div class="card-title">3️⃣ Reg Compliance</div>
+          <ul class="card-list">
+            <li>Regulatory expectations</li>
+            <li>Internal SOP standards</li>
+            <li>Sponsor specific guidelines</li>
+            <li>ICH-GCP regulatory rules</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-frame">
+        <div class="footer-brand"><div class="brand-bar"></div>HIRO · CONFIDENTIAL</div>
+        <div class="footer-page">10</div>
+      </div>
+      <aside class="notes">
+        Principle 5 establishes the 3-pillar QC verification workflow.
+      </aside>
+    </section>
+
+    <!-- ==================== SLIDE 11: PRINCIPLE 6 ==================== -->
+    <section>
+      <div class="slide-header-meta">CONFIDENTIAL</div>
+      <div class="meta-tag">PRINCIPLE 06 / 06</div>
+      <h2>6. Think Company Policy First</h2>
+      <div class="header-rule"></div>
+
+      <div class="grid-auto-2">
+        <div class="card">
+          <div class="card-title">🔒 Institutional Compliance Pillars</div>
+          <ul class="card-list">
+            <li>Full alignment with official <strong>Company SOPs & Policies</strong></li>
+            <li>Strict protection of <strong>Confidential Information & IP</strong></li>
+            <li>Rigorous adherence to <strong>Sponsor NDAs & Agreements</strong></li>
+            <li>Compliance with <strong>Data Privacy & GDPR/HIPAA</strong></li>
+            <li>Execution of mandatory <strong>Quality Procedures</strong></li>
+          </ul>
+        </div>
+        <div class="card-rose">
+          <div class="card-title">⚠️ Uncertainty Protocol</div>
+          <p style="font-size: 0.74em; color: var(--ink60); margin-bottom: 0.6em;">
+            When uncertainty exists regarding AI tool compliance, data safety, or confidentiality, team members must seek guidance prior to tool invocation.
+          </p>
+          <div style="background: var(--stone10); padding: 0.8em; border-radius: 6px; font-size: 0.75em; font-weight: 600; color: var(--rose);">
+            "If a task cannot be performed in compliance with company policy, it should NOT be performed using AI."
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-frame">
+        <div class="footer-brand"><div class="brand-bar"></div>HIRO · CONFIDENTIAL</div>
+        <div class="footer-page">11</div>
+      </div>
+      <aside class="notes">
+        Principle 6 highlights data privacy, sponsor confidentiality, and policy compliance boundaries.
+      </aside>
+    </section>
+
+    <!-- ==================== SLIDE 12: SECTION 3 DIVIDER ==================== -->
+    <section class="divider-section" data-background-color="#0A0E1A">
+      <div class="meta-tag">SECTION 03</div>
+      <h2>AI Capabilities & Boundaries</h2>
+      <div class="divider-sub">What AI Can vs. Cannot Replace</div>
+      <aside class="notes">Section 3 delineates AI capabilities vs irreplaceable human medical judgment.</aside>
+    </section>
+
+    <!-- ==================== SLIDE 13: CAPABILITY MATRIX ==================== -->
+    <section>
+      <div class="slide-header-meta">CONFIDENTIAL</div>
+      <div class="meta-tag">CAPABILITY MATRIX</div>
+      <h2>What AI Can vs. Cannot Replace</h2>
+      <div class="header-rule"></div>
+
+      <div class="grid-auto-2">
+        <div class="card-teal">
+          <div class="card-title">⚡ AI Can Enhance (Execution Speed)</div>
+          <ul class="card-list">
+            <li>🚀 <strong>Draft creation:</strong> Rapid scaffolding of document outlines</li>
+            <li>📄 <strong>Summarization:</strong> Concise synthesis of dense literature</li>
+            <li>🔍 <strong>Information extraction:</strong> Accelerated data parsing</li>
+            <li>📐 <strong>Formatting support:</strong> Layout & style standardization</li>
+            <li>🔍 <strong>QC assistance:</strong> Automated consistency checking</li>
+            <li>📝 <strong>Administrative tasks:</strong> Routine writing & formatting</li>
+          </ul>
+        </div>
+        <div class="card-rose">
+          <div class="card-title">🧠 AI Cannot Replace (Human Expertise)</div>
+          <ul class="card-list">
+            <li>🩺 <strong>Medical judgment:</strong> Specialized clinical reasoning</li>
+            <li>🏛️ <strong>Regulatory strategy:</strong> Complex agency negotiation</li>
+            <li>💡 <strong>Critical thinking:</strong> Logical interrogation & questioning</li>
+            <li>🔬 <strong>Scientific interpretation:</strong> Deep data contextualization</li>
+            <li>⚖️ <strong>Risk-benefit assessment:</strong> Safety evaluation</li>
+            <li>🤝 <strong>Client consultation & decision-making:</strong> Executive trust</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-frame">
+        <div class="footer-brand"><div class="brand-bar"></div>HIRO · CONFIDENTIAL</div>
+        <div class="footer-page">13</div>
+      </div>
+      <aside class="notes">
+        Side-by-side comparison of execution tasks enhanced by AI versus irreplaceable medical and regulatory expertise.
+      </aside>
+    </section>
+
+    <!-- ==================== SLIDE 14: SECTION 4 DIVIDER ==================== -->
+    <section class="divider-section" data-background-color="#0A0E1A">
+      <div class="meta-tag">SECTION 04</div>
+      <h2>Strategic Vision</h2>
+      <div class="divider-sub">Professional Expertise Creates Value</div>
+      <aside class="notes">Section 4 synthesizes the future direction of Medical Writing.</aside>
+    </section>
+
+    <!-- ==================== SLIDE 15: STRATEGIC TAKEAWAY ==================== -->
+    <section>
+      <div class="slide-header-meta">CONFIDENTIAL</div>
+      <div class="meta-tag">STRATEGIC VISION</div>
+      <h2>The Future of Medical Writing</h2>
+      <div class="header-rule"></div>
+
+      <div class="card-rose" style="padding: 1.4em 1.6em;">
+        <p style="font-size: 0.8em; color: var(--ink60); margin: 0 0 0.4em 0; text-transform: uppercase; font-weight: 700; letter-spacing: 0.1em;">Strategic Statement:</p>
+        <div style="font-size: 1.1em; font-weight: 600; color: var(--ink100); line-height: 1.4; margin-bottom: 0.6em;">
+          "The future of Medical Writing is not defined by who uses AI the most.<br>
+          It is defined by who combines <span style="color: var(--rose);">Medical Judgment</span>, <span style="color: var(--rose);">Regulatory Expertise</span>, <span style="color: var(--rose);">Critical Thinking</span>, and <span style="color: var(--rose);">AI Orchestration</span> most effectively."
+        </div>
+      </div>
+
+      <div class="grid-auto-2" style="margin-top: 1em;">
+        <div class="card" style="text-align: center; border-top: 4px solid var(--ink40);">
+          <div style="font-size: 1.15em; font-weight: 700; color: var(--ink80);">AI Increases Productivity</div>
+          <p style="font-size: 0.72em; color: var(--ink60); margin-top: 0.3em;">Accelerates drafting speed and cross-dossier execution</p>
+        </div>
+        <div class="card-rose" style="text-align: center;">
+          <div style="font-size: 1.15em; font-weight: 700; color: var(--rose);">Professional Expertise Creates Value</div>
+          <p style="font-size: 0.72em; color: var(--ink60); margin-top: 0.3em;">Ensures regulatory compliance, clinical integrity, and sponsor trust</p>
+        </div>
+      </div>
+
+      <div class="footer-frame">
+        <div class="footer-brand"><div class="brand-bar"></div>HIRO · CONFIDENTIAL</div>
+        <div class="footer-page">15</div>
+      </div>
+      <aside class="notes">
+        Concluding summary: Speed comes from AI, but value and sponsor confidence come from human expertise and AI orchestration.
+      </aside>
+    </section>
+
+    <!-- ==================== SLIDE 16: THANK YOU ==================== -->
+    <section class="cover-section" data-background-color="#0A0E1A">
+      <div class="meta-tag">THANK YOU</div>
+      <h1 style="font-size: 2.8em;">Thank You</h1>
+      <div class="cover-subtitle" style="font-size: 1.1em;">Harvest Integrated Research Organization (HiRO)</div>
+      
+      <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1.2em; max-width: 620px; font-size: 0.8em; color: var(--ink40); line-height: 1.6;">
+        <strong>APAC Medical Writing Team</strong><br>
+        AI-Enabled Medical Writing Guideline v1.0<br>
+        <em>HiRO Edge Light Styling · Operational Deliverable</em>
+      </div>
+
+      <div class="cover-footer" style="margin-top: 2.5em;">
+        Press <strong>S</strong> for Speaker Notes &nbsp;·&nbsp; Append <code>?print-pdf</code> to URL for PDF Export
+      </div>
+      <aside class="notes">
+        Thank you for reviewing the HiRO AI-Enabled Medical Writing Guideline.
+      </aside>
+    </section>
+
+  </div><!-- /.slides -->
+</div><!-- /.reveal -->
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
+<script>
+Reveal.initialize({
+  hash: true,
+  slideNumber: false,
+  transition: 'slide',
+  transitionSpeed: 'default',
+  controls: true,
+  progress: true,
+  center: false,
+  width: 1920,
+  height: 1080,
+  margin: 0.02,
+  minScale: 0.2,
+  maxScale: 2.0,
+  plugins: [ RevealNotes, RevealHighlight, RevealMath ]
+});
+</script>
+</body>
+</html>
+
+
+
+
+
