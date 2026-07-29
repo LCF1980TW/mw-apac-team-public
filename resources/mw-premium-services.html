@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>HiRO MW Premium Services Portfolio</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" id="theme">
+  <style>
+    :root{
+      --hiro-blue:#0B3A66;
+      --hiro-teal:#0D8B8B;
+      --hiro-gold:#E4A11B;
+      --hiro-ink:#1F2937;
+      --hiro-muted:#6B7280;
+      --hiro-bg:#F7FAFC;
+      --hiro-card:#FFFFFF;
+      --hiro-red:#B42318;
+      --hiro-green:#087443;
+    }
+    .reveal{font-family: "Aptos", "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif; color:var(--hiro-ink);} 
+    .reveal h1,.reveal h2,.reveal h3{font-family:inherit; color:var(--hiro-blue); letter-spacing:-.02em; text-transform:none;}
+    .reveal h1{font-size:2.15em; line-height:1.05;}
+    .reveal h2{font-size:1.45em; margin-bottom:.35em;}
+    .reveal h3{font-size:.9em; color:var(--hiro-teal); margin:0 0 .4em;}
+    .reveal p,.reveal li{font-size:.56em; line-height:1.35;}
+    .reveal small{font-size:.42em; color:var(--hiro-muted);} 
+    .section-tag{display:inline-block; padding:.25em .65em; border-radius:999px; background:#E6F4F1; color:var(--hiro-teal); font-size:.38em; font-weight:700; letter-spacing:.03em; text-transform:uppercase; margin-bottom:.7em;}
+    .hero{background:linear-gradient(135deg,#FFFFFF 0%,#EFF6FF 55%,#E6FFFB 100%); border-radius:22px; padding:48px; box-shadow:0 18px 50px rgba(11,58,102,.12); text-align:left;}
+    .hero .subtitle{font-size:.72em; color:var(--hiro-teal); font-weight:700; margin-top:.4em;}
+    .hero .footer{margin-top:2.4em; color:var(--hiro-muted); font-size:.45em;}
+    .grid{display:grid; gap:18px;}
+    .grid.two{grid-template-columns:1fr 1fr;}
+    .grid.three{grid-template-columns:repeat(3,1fr);}
+    .grid.five{grid-template-columns:repeat(5,1fr);}
+    .card{background:var(--hiro-card); border:1px solid #E5E7EB; border-radius:18px; padding:18px 20px; box-shadow:0 10px 28px rgba(31,41,55,.07); text-align:left;}
+    .card h3{font-size:.68em;}
+    .card p,.card li{font-size:.45em;}
+    .pain{border-top:5px solid #F97066;}
+    .value{border-top:5px solid var(--hiro-teal);} 
+    .sell{border-top:5px solid var(--hiro-gold);} 
+    .kpi{font-size:1.15em; font-weight:800; color:var(--hiro-blue); margin-bottom:.12em;}
+    .muted{color:var(--hiro-muted);} 
+    .accent{color:var(--hiro-teal); font-weight:800;}
+    .gold{color:var(--hiro-gold); font-weight:800;}
+    .red{color:var(--hiro-red); font-weight:800;}
+    .green{color:var(--hiro-green); font-weight:800;}
+    .quote{font-size:.82em!important; color:var(--hiro-blue); font-weight:700; line-height:1.25!important; border-left:7px solid var(--hiro-teal); padding-left:22px;}
+    table{font-size:.43em!important; border-collapse:separate!important; border-spacing:0; width:100%; box-shadow:0 10px 28px rgba(31,41,55,.08); border-radius:16px; overflow:hidden;}
+    th{background:var(--hiro-blue); color:#fff; font-weight:700; padding:14px 16px!important;}
+    td{padding:13px 16px!important; border-bottom:1px solid #E5E7EB!important; background:white; vertical-align:top!important;}
+    tr:last-child td{border-bottom:0!important;}
+    .pill{display:inline-block; padding:.22em .55em; border-radius:999px; background:#EEF2FF; color:#3730A3; font-size:.82em; font-weight:700; white-space:nowrap;}
+    .service-title{display:flex; align-items:center; gap:16px; margin-bottom:16px;}
+    .num{width:46px; height:46px; border-radius:16px; background:var(--hiro-blue); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:.62em;}
+    .service-title h2{margin:0;}
+    .process{display:flex; align-items:center; justify-content:space-between; gap:14px; margin-top:24px;}
+    .step{flex:1; background:#fff; border:1px solid #E5E7EB; border-radius:16px; padding:16px; box-shadow:0 8px 22px rgba(31,41,55,.07);}
+    .step p{font-size:.43em; margin:0; font-weight:700; color:var(--hiro-blue);}
+    .arrow{font-size:.8em; color:var(--hiro-teal); font-weight:800;}
+    .footer-note{position:absolute; bottom:22px; left:48px; right:48px; font-size:.32em!important; color:var(--hiro-muted); text-align:left;}
+    .decision{background:#ECFDF3; border:1px solid #ABEFC6; color:#067647; border-radius:16px; padding:14px 18px; font-size:.48em!important; font-weight:700;}
+    .risk{background:#FEF3F2; border:1px solid #FECDCA; color:#B42318; border-radius:16px; padding:14px 18px; font-size:.48em!important; font-weight:700;}
+    .center{text-align:center;}
+  </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<section>
+  <div class="hero">
+    <span class="section-tag">Quick proposal</span>
+    <h1>HiRO MW Premium Services Portfolio</h1>
+    <p class="subtitle">用 Medical Writing 创造附加价值：更快、更一致、更接近申报成功</p>
+    <p class="quote">客户不只是买文件；客户买的是 <span class="accent">更快决策</span>、<span class="accent">更低监管风险</span> 与 <span class="accent">更高科学可信度</span>。</p>
+    <p class="footer">Prepared for internal discussion | APAC Medical Writing</p>
+  </div>
+  <aside class="notes">Opening message: position this as a revenue expansion model, not just a service list.</aside>
+</section>
+
+<section>
+  <span class="section-tag">Context</span>
+  <h2>为什么现在需要 MW Premium Services？</h2>
+  <div class="grid two">
+    <div class="card pain">
+      <h3>客户痛点</h3>
+      <ul>
+        <li>IND / CTA 时间被压缩，文件周转越来越急</li>
+        <li>FDA/NMPA 意见影响多个文件，但客户常不知道如何同步</li>
+        <li>中国/亚洲 biotech 英文文件常“可读但不够监管级”</li>
+        <li>传统 vendor 速度慢，PM 管理成本高</li>
+      </ul>
+    </div>
+    <div class="card value">
+      <h3>MW 可以创造的价值</h3>
+      <ul>
+        <li>把“写文件”升级为“科学沟通与申报就绪”</li>
+        <li>由 Senior MW 主导，缩短沟通与交付周期</li>
+        <li>提供跨文件一致性与监管写作判断</li>
+        <li>把现有专业能力包装为可收费的高价值服务</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="section-tag">Portfolio</span>
+  <h2>五项优先服务</h2>
+  <table>
+    <thead><tr><th>Service</th><th>客户真正购买的价值</th><th>适合场景</th></tr></thead>
+    <tbody>
+      <tr><td><span class="pill">1. Expedited Translation</span></td><td>Speed to Decision</td><td>IND 前、监管回复、BD/投资人材料</td></tr>
+      <tr><td><span class="pill">2. Scientific English QC</span></td><td>Professional Credibility</td><td>英文文件、简报、briefing book、publication</td></tr>
+      <tr><td><span class="pill">3. Submission Consistency Review</span></td><td>Submission Readiness</td><td>Protocol / IB / ICF / M2.5 同步更新</td></tr>
+      <tr><td><span class="pill">4. FDA/NMPA Impact Assessment</span></td><td>Decision Support</td><td>收到监管意见后快速判断影响范围</td></tr>
+      <tr><td><span class="pill">5. Expert-Led Accelerated Writing</span></td><td>Professional Speed</td><td>Protocol、IB update、briefing package、CSR draft</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="service-title"><div class="num">1</div><h2>Expedited Translation Service</h2></div>
+  <div class="grid three">
+    <div class="card pain"><h3>客户痛点</h3><ul><li>翻译需求常临时发生</li><li>传统 vendor 周期长</li><li>医学术语与监管表述不稳定</li><li>PM/客户需多轮追踪与校对</li></ul></div>
+    <div class="card value"><h3>HiRO 方案</h3><ul><li>专业医学翻译 + MW QC</li><li>MW 专业校对</li><li>医学术语一致性检查</li><li>适合急件与高价值文件</li></ul></div>
+    <div class="card sell"><h3>销售卖点</h3><p class="kpi">Speed to Decision</p><p>不是卖“翻译字数”，而是帮助客户快速决策、快速沟通、减少项目延误。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="service-title"><div class="num">2</div><h2>Scientific English QC Service</h2></div>
+  <div class="grid three">
+    <div class="card pain"><h3>客户痛点</h3><ul><li>英文可理解，但不够 FDA/NMPA 风格</li><li>科学逻辑不够清楚</li><li>术语、语气、风险描述不一致</li><li>影响专业形象与沟通效率</li></ul></div>
+    <div class="card value"><h3>HiRO 方案</h3><ul><li>Scientific language polishing</li><li>Regulatory tone alignment</li><li>Terminology consistency</li><li>关键讯息强化</li></ul></div>
+    <div class="card sell"><h3>销售卖点</h3><p class="kpi">Professional Credibility</p><p>客户买的是更专业、更可信的科学沟通，而不是一般 grammar check。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="service-title"><div class="num">3</div><h2>Submission Consistency Review</h2></div>
+  <div class="grid two">
+    <div class="card pain"><h3>客户痛点</h3><ul><li>Protocol、IB、ICF、M2.5、slides 容易不同步</li><li>剂量、DDI、safety wording、入排标准可能互相矛盾</li><li>更新一个文件后，其他文件常被遗漏</li><li>最终导致监管问题、返工或延误</li></ul></div>
+    <div class="card value"><h3>HiRO 方案</h3><ul><li>跨文件一致性 mapping</li><li>关键医学概念与措辞 QC</li><li>专业医学写作一致性检查</li><li>统一 scientific narrative</li></ul></div>
+  </div>
+  <p class="decision">核心卖点：客户购买的是申报就绪度（Submission Readiness），不是单纯 QC 工时。</p>
+</section>
+
+<section>
+  <div class="service-title"><div class="num">4</div><h2>FDA/NMPA Comment Impact Assessment</h2></div>
+  <div class="grid three">
+    <div class="card pain"><h3>客户痛点</h3><ul><li>收到监管意见后，不确定哪些文件受影响</li><li>团队花很多时间讨论但难以定案</li><li>缺乏清楚的修改优先级</li><li>担心回应不一致或过度修改</li></ul></div>
+    <div class="card value"><h3>HiRO 方案</h3><ul><li>Comment summary</li><li>Impact matrix</li><li>Document mapping</li><li>Proposed wording / action list</li></ul></div>
+    <div class="card sell"><h3>销售卖点</h3><p class="kpi">Decision Support</p><p>客户买的是快速判断和行动方向，而不是只找人改文件。</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="service-title"><div class="num">5</div><h2>Expert-Led Accelerated Medical Writing</h2></div>
+  <div class="grid two">
+    <div class="card pain"><h3>客户痛点</h3><ul><li>融资窗口、IND window、竞争压力让时间变成最大成本</li><li>内部 MW 资源有限</li><li>传统写作流程太慢</li><li>客户需要“专业质量下的更快交付”</li></ul></div>
+    <div class="card value"><h3>HiRO 方案</h3><ul><li>Senior MW-led drafting support</li><li>Senior MW scientific leadership</li><li>Structured QC and audit trail mindset</li><li>适合专业初稿、关键更新、response package、briefing materials</li></ul></div>
+  </div>
+  <p class="decision">核心卖点：客户购买的是专业判断、写作质量与更快申报推进，而不是单纯 Medical Writing hours。</p>
+</section>
+
+<section>
+  <span class="section-tag">How to Sell</span>
+  <h2>销售话术：从“文件服务”转换为“业务价值”</h2>
+  <table>
+    <thead><tr><th>不要这样卖</th><th>应该这样卖</th></tr></thead>
+    <tbody>
+      <tr><td>我们可以帮你翻译</td><td>我们可以帮你在关键时间点更快完成内部决策与监管沟通</td></tr>
+      <tr><td>我们可以帮你润稿</td><td>我们可以提升英文材料的科学可信度与监管沟通质量</td></tr>
+      <tr><td>我们可以帮你做 QC</td><td>我们可以降低跨文件不一致造成的监管风险</td></tr>
+      <tr><td>我们可以改 FDA comment 相关文件</td><td>我们可以帮助你快速判断监管意见影响范围并形成行动计划</td></tr>
+      <tr><td>我们可以由资深 MW 快速组织高质量草稿与审阅</td><td>我们可以用专业判断与成熟写作流程缩短 time-to-submission</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <span class="section-tag">Commercial Model</span>
+  <h2>建议商业模式</h2>
+  <table>
+    <thead><tr><th>Service</th><th>Pricing Model</th><th>Why it works</th></tr></thead>
+    <tbody>
+      <tr><td>Expedited Translation</td><td>MW hourly rate / premium urgent fee</td><td>客户愿为速度与专业度付费</td></tr>
+      <tr><td>Scientific English QC</td><td>Fixed fee or hourly</td><td>范围清楚，毛利高</td></tr>
+      <tr><td>Submission Consistency Review</td><td>Fixed fee by document package</td><td>价值与风险降低相关，适合打包销售</td></tr>
+      <tr><td>Impact Assessment</td><td>Fixed fee per regulatory comment package</td><td>高咨询价值，可快速交付</td></tr>
+      <tr><td>Expert-Led Accelerated Writing</td><td>Premium uplift / accelerated package</td><td>以资深 MW 专业判断和成熟流程压缩周期</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <span class="section-tag">Pilot</span>
+  <h2>建议先做 3 个可快速验证的 Pilot</h2>
+  <div class="grid three">
+    <div class="card value"><h3>Pilot 1</h3><p class="kpi">Translation + MW QC</p><p>选择既有客户的紧急中英文件，测试客户对 premium turnaround 的接受度。</p></div>
+    <div class="card value"><h3>Pilot 2</h3><p class="kpi">Consistency Review</p><p>针对 Protocol / IB / M2.5 / ICF 同步更新项目，包装成独立报价格式。</p></div>
+    <div class="card value"><h3>Pilot 3</h3><p class="kpi">Impact Assessment</p><p>以 FDA/NMPA comment 为触发点，提供 impact matrix + wording proposal。</p></div>
+  </div>
+</section>
+
+<section>
+  <span class="section-tag">Operating Model</span>
+  <h2>建议执行流程</h2>
+  <div class="process">
+    <div class="step"><p>1. Identify Need<br><span class="muted">从 RA/PM/BD 发现客户痛点</span></p></div>
+    <div class="arrow">→</div>
+    <div class="step"><p>2. Scope Package<br><span class="muted">定义文件范围、交付物、收费方式</span></p></div>
+    <div class="arrow">→</div>
+    <div class="step"><p>3. Expert MW Work<br><span class="muted">Senior MW 主导，负责判断、写作与 QC</span></p></div>
+    <div class="arrow">→</div>
+    <div class="step"><p>4. Deliver Value<br><span class="muted">交付决策支持、申报就绪或科学沟通成果</span></p></div>
+  </div>
+  <p class="footer-note">重点：先小规模验证；先形成可重复报价、交付模板与专业 QC 标准。</p>
+</section>
+
+<section>
+  <span class="section-tag">Internal Business Case</span>
+  <h2>管理层关心的重点</h2>
+  <table>
+    <thead><tr><th>Service</th><th>易销售性</th><th>毛利潜力</th><th>是否需新增 FTE</th></tr></thead>
+    <tbody>
+      <tr><td>Expedited Translation</td><td class="green">High</td><td class="green">High</td><td>No</td></tr>
+      <tr><td>Scientific English QC</td><td class="green">High</td><td class="green">Very High</td><td>No</td></tr>
+      <tr><td>Submission Consistency Review</td><td class="green">High</td><td class="green">Very High</td><td>No</td></tr>
+      <tr><td>Impact Assessment</td><td>Medium</td><td class="green">Very High</td><td>No</td></tr>
+      <tr><td>Expert-Led Accelerated Writing</td><td class="green">High</td><td class="green">High</td><td>No</td></tr>
+    </tbody>
+  </table>
+  <p class="decision">建议决策：先允许 APAC MW 以 pilot 形式向既有客户提供 3 项服务：Translation + MW QC、Consistency Review、Impact Assessment。</p>
+</section>
+
+<section>
+  <div class="hero center">
+    <span class="section-tag">Key Message</span>
+    <h1>From Document Writing<br>to Strategic Scientific Support</h1>
+    <p class="subtitle">MW Premium Services can create new revenue from existing clients by packaging professional expertise into high-value services.</p>
+    <div class="grid five" style="margin-top:34px;">
+      <div class="card"><h3>Speed</h3><p>更快决策</p></div>
+      <div class="card"><h3>Consistency</h3><p>跨文件一致</p></div>
+      <div class="card"><h3>Readiness</h3><p>申报就绪</p></div>
+      <div class="card"><h3>Credibility</h3><p>科学可信</p></div>
+      <div class="card"><h3>Decision</h3><p>监管回应</p></div>
+    </div>
+  </div>
+</section>
+
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    transition: 'slide',
+    controls: true,
+    progress: true,
+    center: true,
+    width: 1280,
+    height: 720,
+    margin: 0.06,
+    plugins: [ RevealNotes ]
+  });
+</script>
+</body>
+</html>
