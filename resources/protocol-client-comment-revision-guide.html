@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protocol 客戶批注修訂指引</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/monokai.css">
+<style>
+  :root {
+    --rose-900:#542336; --rose-700:#9f3b59; --rose-500:#c9657d;
+    --rose-100:#f7e8ec; --rose-050:#fff9fa; --ink:#25232a;
+    --muted:#6b6670; --navy:#18364f; --teal:#2f8f8a; --line:#ead9de;
+    --r-heading-font:'Microsoft JhengHei','PingFang TC','Noto Sans TC',sans-serif;
+    --r-main-font:'Microsoft JhengHei','PingFang TC','Noto Sans TC',sans-serif;
+    --r-main-color:var(--ink); --r-heading-color:var(--rose-900);
+    --r-background-color:var(--rose-050); --r-link-color:var(--rose-700);
+  }
+  .reveal{font-size:27px;background:var(--rose-050)}
+  .reveal .slides section{text-align:left;padding:0 34px;box-sizing:border-box}
+  .reveal h1,.reveal h2,.reveal h3{text-align:left;text-transform:none;letter-spacing:0;color:var(--rose-900)}
+  .reveal h1{font-size:2.1em;line-height:1.2;font-weight:800}
+  .reveal h2{font-size:1.35em;margin:0 0 .3em;font-weight:800}
+  .reveal h3{font-size:.72em;margin:.1em 0 .25em;color:var(--rose-700)}
+  .reveal p,.reveal li{line-height:1.4}
+  .reveal ul,.reveal ol{margin-top:.35em}
+  .reveal li{margin:.2em 0}
+  .kicker{font-size:.52em;letter-spacing:.18em;text-transform:uppercase;color:var(--rose-700);font-weight:700}
+  .subtitle{color:var(--muted);font-size:.78em}
+  .small{font-size:.58em;color:var(--muted)}
+  .tiny{font-size:.48em;color:var(--muted)}
+  .accent{color:var(--rose-700);font-weight:800}
+  .navy{color:var(--navy);font-weight:800}
+  .callout{background:linear-gradient(135deg,#fff,#faeef1);border:1px solid var(--line);border-left:6px solid var(--rose-700);border-radius:12px;padding:.55em .8em;box-shadow:0 8px 22px rgba(84,35,54,.07)}
+  .callout.teal{border-left-color:var(--teal);background:#f0faf9}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.1em;align-items:start}
+  .three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:.7em;align-items:stretch}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:.65em .75em;box-shadow:0 7px 20px rgba(84,35,54,.06)}
+  .card p{font-size:.58em;margin:.25em 0;color:var(--muted)}
+  .card strong{color:var(--rose-700)}
+  .flow{display:flex;align-items:stretch;gap:.24em;margin-top:1em}
+  .flow .step{flex:1;position:relative;background:#fff;border:1px solid var(--line);border-radius:13px;padding:.55em .35em;text-align:center;min-height:120px}
+  .flow .step:not(:last-child)::after{content:'→';position:absolute;right:-.36em;top:38%;color:var(--rose-500);font-weight:800;z-index:2}
+  .num{display:inline-flex;width:1.5em;height:1.5em;border-radius:50%;background:var(--rose-700);color:#fff;align-items:center;justify-content:center;font-size:.7em;font-weight:800;margin-bottom:.25em}
+  .step b{display:block;font-size:.57em;color:var(--navy)}
+  .step span{display:block;font-size:.45em;color:var(--muted);margin-top:.25em;line-height:1.35}
+  .matrix{width:100%;border-collapse:collapse;font-size:.55em;background:#fff;border:1px solid var(--line);overflow:hidden;border-radius:10px}
+  .matrix th{background:var(--rose-100);color:var(--rose-900);font-weight:800;text-align:left}
+  .matrix th,.matrix td{padding:.42em .55em;border-bottom:1px solid var(--line);vertical-align:top}
+  .matrix tr:last-child td{border-bottom:0}
+  .tag{display:inline-block;border-radius:99px;padding:.13em .55em;font-size:.48em;font-weight:800;margin:.08em;color:#fff}
+  .critical{background:#b23d4d}.major{background:#d38336}.minor{background:#6d8499}.obs{background:#9a8a98}
+  .checklist{display:grid;grid-template-columns:1fr 1fr;gap:.35em .8em}
+  .check{font-size:.59em;padding:.35em .5em;background:#fff;border:1px solid var(--line);border-radius:8px}
+  .check::before{content:'✓';color:var(--teal);font-weight:900;margin-right:.35em}
+  .prompt{font-family:'Cascadia Code','Consolas',monospace;background:#182532;color:#f9e8ed;border-radius:10px;padding:.7em .8em;font-size:.48em;line-height:1.45;white-space:pre-wrap}
+  .quote{font-size:.86em;color:var(--rose-900);font-weight:700;border-left:5px solid var(--rose-500);padding-left:.7em}
+  .hero{background:linear-gradient(135deg,#fff8f9 0%,#f5dbe1 58%,#edc3ce 100%);border-radius:22px;padding:1.1em 1.25em;box-shadow:0 16px 34px rgba(84,35,54,.12)}
+  .section-divider{background:linear-gradient(135deg,#542336,#9f3b59)!important;color:#fff!important}
+  .section-divider h2,.section-divider p{color:#fff!important}
+  .footer{position:fixed;bottom:16px;right:28px;font-size:12px;color:#a58e96;letter-spacing:.06em}
+  .reveal .progress{color:var(--rose-700)}
+  @media print{.footer{display:none}.reveal{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<section data-background-color="#fff9fa">
+  <div class="hero">
+    <div class="kicker">Protocol • Comment-to-Change • QC Gate</div>
+    <h1>客戶批注修訂指引</h1>
+    <p class="subtitle">一致性控制、AI 輔助檢查與交付前 QC</p>
+    <p class="small">適用：Protocol 版本修訂／客戶批注回應／跨章節一致性核對</p>
+    <p class="tiny">HiRO Medical Writing Workflow｜2026-07-16</p>
+  </div>
+  <aside class="notes">本簡報聚焦於收到客戶批注後的可追溯修訂流程。每項修改都要能回到批注、來源與受影響位置。</aside>
+</section>
+
+<section>
+  <div class="kicker">01｜目標</div>
+  <h2>先控制變更，再開始寫字</h2>
+  <div class="three-col">
+    <div class="card"><h3>可追溯</h3><p>每項批注都有 <strong>Comment ID</strong>、處置決定、修改位置與回覆。</p></div>
+    <div class="card"><h3>一致性</h3><p>同一概念、數值、時間點與術語，跨章節維持單一表述。</p></div>
+    <div class="card"><h3>可交付</h3><p>完成修訂、AI 檢查、人工 QC、版本鎖定後再發送。</p></div>
+  </div>
+  <div class="callout" style="margin-top:1em"><span class="quote">核心原則：批注是變更起點；核准來源與最終 QC 才是交付依據。</span></div>
+  <aside class="notes">Protocol 修訂的風險通常來自局部修改造成的連鎖差異。流程的目的，是讓每個決定與每個受影響位置都留下證據。</aside>
+</section>
+
+<section>
+  <div class="kicker">02｜工作流</div>
+  <h2>Comment-to-Change 全流程</h2>
+  <div class="flow">
+    <div class="step"><span class="num">1</span><b>接收批注</b><span>整理批注、版本、來源</span></div>
+    <div class="step"><span class="num">2</span><b>分類與分級</b><span>內容／資料／格式／邏輯</span></div>
+    <div class="step"><span class="num">3</span><b>影響分析</b><span>定位跨章節與跨文件影響</span></div>
+    <div class="step"><span class="num">4</span><b>修訂與回覆</b><span>修改、記錄理由、形成回覆</span></div>
+    <div class="step"><span class="num">5</span><b>AI＋人工 QC</b><span>檢查差異、確認證據、鎖定版本</span></div>
+  </div>
+  <p class="small" style="margin-top:1em">建議工作順序：<span class="accent">/plan → /draft → /audit → /refine → /cross-check</span></p>
+  <aside class="notes">把批注處理視為一條可重複的工作流，而非單純的逐句改稿。先分清影響範圍，再執行修改。</aside>
+</section>
+
+<section>
+  <div class="kicker">03｜批注接收</div>
+  <h2>先建立 Comment Log</h2>
+  <div class="two-col">
+    <table class="matrix">
+      <thead><tr><th>欄位</th><th>用途</th></tr></thead>
+      <tbody>
+        <tr><td><strong>[批注ID]</strong></td><td>全程唯一識別</td></tr>
+        <tr><td>來源／版本</td><td>客戶文件、日期、Protocol 版本</td></tr>
+        <tr><td>位置</td><td>Section、頁碼、段落、表格或 SOA</td></tr>
+        <tr><td>批注原文</td><td>保留原始措辭與上下文</td></tr>
+        <tr><td>處置決定</td><td>Accept／Partial／Clarify／Reject with rationale</td></tr>
+        <tr><td>狀態</td><td>Open／In progress／Resolved／Pending confirmation</td></tr>
+      </tbody>
+    </table>
+    <div>
+      <div class="callout"><h3>先問三件事</h3><ol class="small"><li>客戶想解決的是內容、表述還是證據？</li><li>此批注是否改變研究設計或執行要求？</li><li>哪些章節、表格、附錄需要同步？</li></ol></div>
+      <div class="callout teal" style="margin-top:.7em"><h3>資料缺口</h3><p class="small">以 <strong>[待確認：來源／數值／版本]</strong> 標記，保留後續追蹤。</p></div>
+    </div>
+  </div>
+  <aside class="notes">Comment Log 是修訂的控制中心。位置資訊越精確，後續的交叉檢查與客戶回覆越可靠。</aside>
+</section>
+
+<section>
+  <div class="kicker">04｜分類</div>
+  <h2>批注分類決定檢查深度</h2>
+  <table class="matrix">
+    <thead><tr><th>類型</th><th>典型批注</th><th>修訂動作</th><th>建議檢查</th></tr></thead>
+    <tbody>
+      <tr><td><strong>內容／資料</strong></td><td>數值、劑量、樣本數、時間窗</td><td>回到核准來源</td><td>數值＋來源核對</td></tr>
+      <tr><td><strong>邏輯／設計</strong></td><td>入排標準、終點、停藥規則</td><td>做跨章節影響圖</td><td>Protocol consistency</td></tr>
+      <tr><td><strong>術語／語言</strong></td><td>縮寫、定義、語氣、翻譯</td><td>更新術語表</td><td>全文件搜尋</td></tr>
+      <tr><td><strong>格式／版面</strong></td><td>表格、標題、交叉引用</td><td>依模板修訂</td><td>Word＋PDF 視覺 QC</td></tr>
+      <tr><td><strong>證據／引用</strong></td><td>來源、文獻、法規依據</td><td>核對原始文件</td><td>引用與版本追蹤</td></tr>
+    </tbody>
+  </table>
+  <p class="small">判斷原則：<span class="accent">會改變研究執行、受試者安全或主要分析的批注</span>，進入 Major／Critical 影響分析。</p>
+  <aside class="notes">分類不是行政動作，而是決定後續需要幾層驗證。邏輯、資料與安全相關批注，優先於語言和版面調整。</aside>
+</section>
+
+<section data-background-color="#542336" class="section-divider">
+  <div class="kicker" style="color:#f4cbd5">Section 02</div>
+  <h2>影響分析</h2>
+  <p>從一則批注，找出整份 Protocol 的變更邊界。</p>
+  <aside class="notes">接下來從批注轉入影響分析。這一步用來避免只改到局部位置。</aside>
+</section>
+
+<section>
+  <div class="kicker">05｜影響分析</div>
+  <h2>三層 Impact Map</h2>
+  <div class="three-col">
+    <div class="card"><h3>Layer 1｜局部</h3><p><strong>同段／同表</strong><br>句子、表格欄位、註腳、交叉引用。</p><p class="tiny">例：將 Visit 4 改為 Visit 5。</p></div>
+    <div class="card"><h3>Layer 2｜跨章節</h3><p><strong>設計與執行</strong><br>Synopsis、Objectives、SOA、Procedures、Statistics。</p><p class="tiny">例：新增一次影像評估。</p></div>
+    <div class="card"><h3>Layer 3｜跨文件</h3><p><strong>整套提交文件</strong><br>ICF、IB、SAP、eCRF、藥物管理文件。</p><p class="tiny">例：修改風險或給藥規則。</p></div>
+  </div>
+  <div class="callout" style="margin-top:1em"><h3>輸出格式</h3><p class="small"><strong>Finding：</strong>批注 → 影響位置 → 修訂決定 → 需同步文件 → 責任人／狀態</p></div>
+  <aside class="notes">影響分析至少要涵蓋同一文件內的章節、表格和附錄。若涉及風險、給藥或研究程序，應列出跨文件同步範圍。</aside>
+</section>
+
+<section>
+  <div class="kicker">06｜一致性</div>
+  <h2>Protocol 一致性熱點</h2>
+  <div class="checklist">
+    <div class="check"><strong>Synopsis ↔ 正文</strong><br>目的、設計、樣本數、主要終點</div>
+    <div class="check"><strong>Objectives ↔ Endpoints</strong><br>每個目的都有對應測量與時間點</div>
+    <div class="check"><strong>Eligibility ↔ Screening</strong><br>入排標準與檢查項目完整對應</div>
+    <div class="check"><strong>Treatment ↔ Dose rules</strong><br>劑量、週期、減量、停藥邏輯一致</div>
+    <div class="check"><strong>SOA ↔ Procedures</strong><br>訪視、評估、抽血、影像、PK／PD</div>
+    <div class="check"><strong>AE/SAE ↔ Safety</strong><br>定義、分級、報告時限、特殊關注事件</div>
+    <div class="check"><strong>Statistics ↔ Design</strong><br>分析集、終點、樣本量、缺失資料</div>
+    <div class="check"><strong>Appendices ↔ 正文</strong><br>流程圖、決策表、評分標準與版本</div>
+  </div>
+  <p class="small">高風險對照：<span class="accent">SOA ↔ Footnotes ↔ Study Procedures</span>；任何落差先升級審查。</p>
+  <aside class="notes">SOA 是 Protocol 的中央控制表。任何訪視、評估、時間窗或條件性程序的變更，都要回查正文和註腳。</aside>
+</section>
+
+<section>
+  <div class="kicker">07｜修訂規則</div>
+  <h2>建立 Single Source of Truth</h2>
+  <div class="two-col">
+    <div class="callout"><h3>先鎖定的元素</h3><ul class="small"><li>Protocol number／version／date</li><li>研究藥物名稱與縮寫</li><li>Phase、研究設計、族群</li><li>劑量單位、週期、訪視名稱</li><li>主要／次要終點與評估標準</li><li>RECIST 1.1、CTCAE v5.0 等版本</li></ul></div>
+    <div class="callout teal"><h3>修訂後同步</h3><ul class="small"><li>全文搜尋舊值與同義表述</li><li>回查表格、註腳、圖與附件</li><li>回查 ICF、IB、SAP、eCRF</li><li>更新目錄、頁碼與交叉引用</li><li>以變更摘要說明理由與影響</li><li>保留修訂前後版本證據</li></ul></div>
+  </div>
+  <p class="quote" style="margin-top:.9em">同一概念採同一術語；同一數值採同一單位；同一規則採同一邏輯。</p>
+  <aside class="notes">一致性不是只看拼字。要建立術語、數值、時間點和版本的控制表，再用它驅動全文件搜尋與修訂。</aside>
+</section>
+
+<section data-background-color="#542336" class="section-divider">
+  <div class="kicker" style="color:#f4cbd5">Section 03</div>
+  <h2>AI 輔助檢查</h2>
+  <p>AI 做廣度與差異偵測；人員做證據判定與最終放行。</p>
+  <aside class="notes">AI 的價值在於快速掃描大量文字與位置。最終判定仍需由熟悉研究與核准來源的人員完成。</aside>
+</section>
+
+<section>
+  <div class="kicker">08｜AI 架構</div>
+  <h2>四層 AI 檢查法</h2>
+  <div class="flow">
+    <div class="step"><span class="num">A</span><b>抽取</b><span>擷取術語、數值、時間點、引用</span></div>
+    <div class="step"><span class="num">B</span><b>比對</b><span>新舊版本、SOA 與正文、文件 A/B</span></div>
+    <div class="step"><span class="num">C</span><b>找矛盾</b><span>定位差異、缺漏、條件衝突</span></div>
+    <div class="step"><span class="num">D</span><b>報告</b><span>輸出 Finding、位置、嚴重度、建議</span></div>
+  </div>
+  <div class="two-col" style="margin-top:1em">
+    <div class="callout"><h3>AI 輸出要有</h3><p class="small">原文片段｜位置｜差異類型｜影響範圍｜信心程度｜建議下一步</p></div>
+    <div class="callout teal"><h3>人工確認要有</h3><p class="small">核准來源｜醫學合理性｜法規適用性｜最終措辭｜Owner／Status</p></div>
+  </div>
+  <aside class="notes">把 AI 任務拆成抽取、比對、矛盾偵測和報告四層，輸出會比直接問「請檢查全文」更穩定、更可追蹤。</aside>
+</section>
+
+<section>
+  <div class="kicker">09｜可複用 Prompt</div>
+  <h2>AI 檢查 Prompt 模板</h2>
+  <div class="prompt">角色：Protocol QC Reviewer
+任務：比較【修訂前】與【修訂後】，僅依據提供內容判斷。
+檢查維度：
+1. 數值、單位、劑量、樣本數、時間窗
+2. 術語、縮寫、版本與定義
+3. SOA、Footnote、Study Procedures 的對應
+4. Objectives、Endpoints、Statistics 的邏輯連結
+5. 交叉引用、表格、附錄與跨文件影響
+輸出表格：ID｜Severity｜Location｜Evidence｜Difference｜XREF｜Recommended action｜Confidence
+規則：資料缺口標示 [待確認]；每項 Finding 提供原文證據；未提供的資料列為 Open question。</div>
+  <p class="small">建議輸入：先給 <span class="accent">Comment Log＋變更摘要＋相關章節</span>，再給全文或文件對照。</p>
+  <aside class="notes">Prompt 的重點是限定資料範圍、指定檢查維度、要求位置與證據。這能降低泛化建議，讓 QC 人員快速複核。</aside>
+</section>
+
+<section>
+  <div class="kicker">10｜AI 應用場景</div>
+  <h2>把 AI 放在高價值檢查點</h2>
+  <table class="matrix">
+    <thead><tr><th>任務</th><th>AI 可協助</th><th>人工重點</th></tr></thead>
+    <tbody>
+      <tr><td>版本比較</td><td>擷取所有文字／表格差異</td><td>判斷變更是否符合批注意圖</td></tr>
+      <tr><td>術語一致性</td><td>找出同義詞、縮寫與大小寫差異</td><td>核准標準術語與首現定義</td></tr>
+      <tr><td>SOA 對照</td><td>逐行比對訪視、評估、註腳</td><td>確認執行流程與醫學合理性</td></tr>
+      <tr><td>交叉文件</td><td>建立 Protocol ↔ ICF／IB／SAP 差異表</td><td>確認受影響文件與變更責任人</td></tr>
+      <tr><td>格式檢查</td><td>檢查標題階層、編號、引用完整性</td><td>開啟 Word／PDF 做視覺確認</td></tr>
+    </tbody>
+  </table>
+  <div class="callout" style="margin-top:.8em"><p class="small"><strong>實務建議：</strong>AI Finding 先進入 QC Discrepancy Report，再由 reviewer 逐條標記 Resolved／Open。</p></div>
+  <aside class="notes">AI 適合高量、規則化、位置明確的檢查。涉及臨床決策或法規判斷時，保留人工 reviewer 與核准來源。</aside>
+</section>
+
+<section>
+  <div class="kicker">11｜QC 分級</div>
+  <h2>Finding 的嚴重度與處置</h2>
+  <table class="matrix">
+    <thead><tr><th>Severity</th><th>判定特徵</th><th>處置</th></tr></thead>
+    <tbody>
+      <tr><td><span class="tag critical">CRITICAL</span></td><td>可能影響受試者安全、研究執行、主要終點或核心數據</td><td>修訂完成＋專家／客戶確認＋回歸檢查</td></tr>
+      <tr><td><span class="tag major">MAJOR</span></td><td>跨章節矛盾、關鍵程序缺漏、重要引用或邏輯落差</td><td>修訂完成＋XREF＋二次 QC</td></tr>
+      <tr><td><span class="tag minor">MINOR</span></td><td>局部術語、格式、語法或可讀性問題</td><td>批次修訂＋抽樣確認</td></tr>
+      <tr><td><span class="tag obs">OBSERVATION</span></td><td>改善建議或待客戶決策事項</td><td>記錄於 Log，保留決策軌跡</td></tr>
+    </tbody>
+  </table>
+  <div class="callout" style="margin-top:.8em"><p class="small"><strong>Finding 格式：</strong>[ID]｜[Severity]｜[Location]｜[Evidence]｜[XREF]｜[Fix]｜[Status]</p></div>
+  <aside class="notes">Severity 主要用來排序處理順序與決定是否需要升級確認。所有 Finding 都要有位置與證據。</aside>
+</section>
+
+<section>
+  <div class="kicker">12｜交付前 QC</div>
+  <h2>Pre-delivery QC Gate</h2>
+  <div class="two-col">
+    <div>
+      <h3>內容與一致性</h3>
+      <div class="checklist" style="display:block"><div class="check">批注 Log 全部有處置狀態</div><div class="check">數值、單位、版本、日期完成核對</div><div class="check">SOA、註腳、正文、附錄互相對應</div><div class="check">Synopsis 與主要章節一致</div><div class="check">入排標準與 Screening 評估一致</div></div>
+    </div>
+    <div>
+      <h3>格式與證據</h3>
+      <div class="checklist" style="display:block"><div class="check">標題、編號、目錄、頁碼正確</div><div class="check">表格、圖、註腳、交叉引用完整</div><div class="check">Track Changes／Comments 已按交付要求處理</div><div class="check">引用與版本可回溯至來源</div><div class="check">Word 與 PDF 皆完成視覺抽查</div></div>
+    </div>
+  </div>
+  <p class="small" style="margin-top:.7em">Gate 判定：<span class="accent">Ready for delivery</span>／Requires revision／Pending confirmation</p>
+  <aside class="notes">QC Gate 同時看內容和格式。即使內容已完成，頁碼、目錄、註腳和 PDF 轉檔仍需要獨立確認。</aside>
+</section>
+
+<section>
+  <div class="kicker">13｜客戶回覆</div>
+  <h2>用 Response Matrix 讓回覆可追蹤</h2>
+  <table class="matrix">
+    <thead><tr><th>ID</th><th>客戶批注</th><th>處置</th><th>修訂位置</th><th>回覆文字</th></tr></thead>
+    <tbody>
+      <tr><td>[C-001]</td><td>Clarify visit window</td><td><span class="accent">Accepted</span></td><td>Section 7.1；SOA；Footnote b</td><td>已依批注統一時間窗，並同步更新 SOA 與註腳。</td></tr>
+      <tr><td>[C-002]</td><td>Confirm sample size</td><td><span class="accent">Pending</span></td><td>Synopsis；Section 9.1</td><td>待收到 [來源／統計決策] 後完成最終確認。</td></tr>
+      <tr><td>[C-003]</td><td>Improve wording</td><td><span class="accent">Accepted</span></td><td>Section 4.2</td><td>已依 Protocol 術語表修訂，並完成全文搜尋。</td></tr>
+    </tbody>
+  </table>
+  <div class="callout" style="margin-top:.8em"><p class="small">回覆原則：簡短說明 <strong>採納／部分採納／待確認</strong>，附上受影響位置與下一步。</p></div>
+  <aside class="notes">客戶回覆不只是禮貌訊息，而是變更決策的紀錄。用同一個 ID 連結批注、修訂位置、QC Finding 和最終回覆。</aside>
+</section>
+
+<section>
+  <div class="kicker">14｜總結</div>
+  <h2>五個交付習慣</h2>
+  <div class="flow">
+    <div class="step"><span class="num">1</span><b>先建 Log</b><span>批注、版本、位置、狀態</span></div>
+    <div class="step"><span class="num">2</span><b>再看影響</b><span>局部、跨章節、跨文件</span></div>
+    <div class="step"><span class="num">3</span><b>鎖定一致性</b><span>術語、數值、時間點、版本</span></div>
+    <div class="step"><span class="num">4</span><b>AI 做廣度</b><span>抽取、比對、找矛盾、報告</span></div>
+    <div class="step"><span class="num">5</span><b>人工放行</b><span>證據、醫學、法規、交付</span></div>
+  </div>
+  <div class="hero" style="margin-top:1em;padding:.7em 1em"><p class="quote" style="margin:0">每一項修訂，都能回答：為何改、改了哪裡、影響什麼、誰確認、如何放行。</p></div>
+  <p class="tiny" style="margin-top:1em">PDF：瀏覽器開啟後使用 `?print-pdf` 進行列印版面檢查。</p>
+  <aside class="notes">結束時再次強調：良好的 Protocol 修訂工作，是可追溯、可交叉檢查、可由團隊重複執行的品質流程。</aside>
+</section>
+
+<section data-background-color="#542336" class="section-divider">
+  <h2 style="text-align:center">Thank you</h2>
+  <p style="text-align:center">Protocol Comment Revision · AI-assisted QC · Delivery Gate</p>
+</section>
+
+</div>
+<div class="footer">HiRO · Protocol Quality Workflow</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
+<script>
+Reveal.initialize({
+  hash:true, slideNumber:'c/t', transition:'slide', transitionSpeed:'default',
+  controls:true, progress:true, center:false, width:1280, height:720, margin:0.04,
+  plugins:[RevealNotes, RevealHighlight, RevealMath]
+});
+</script>
+</body>
+</html>
