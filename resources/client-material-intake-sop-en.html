@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sponsor Material Intake &amp; Provenance Lock SOP</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
+<style>
+  :root {
+    --r-heading-font: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    --r-main-font: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    --r-heading-color: #A02746; /* HiRO 桃花色 / Deep Rose */
+    --r-link-color: #A02746;
+    --r-selection-background-color: rgba(160, 39, 70, 0.2);
+  }
+  .reveal .slides section {
+    text-align: left;
+    padding: 20px 40px;
+  }
+  .reveal h1, .reveal h2, .reveal h3 {
+    text-align: center;
+    font-family: var(--r-heading-font);
+    font-weight: 700;
+    text-transform: none;
+  }
+  .reveal h1 {
+    font-size: 2.2em;
+    color: #A02746; /* HiRO 桃花色 */
+  }
+  .reveal h2 {
+    font-size: 1.6em;
+    color: #A02746;
+    border-bottom: 3px solid #A02746;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+  }
+  .reveal h3 {
+    font-size: 1.2em;
+    color: #0A0E1A;
+  }
+  .highlight {
+    color: #A02746; /* 桃花色 / Deep Rose */
+    font-weight: bold;
+  }
+  .highlight-blue {
+    color: #0A0E1A;
+    font-weight: bold;
+  }
+  .callout {
+    background: #FAFAF7; /* Paper background */
+    border-left: 5px solid #A02746; /* 桃花色 / Deep Rose */
+    padding: 15px 20px;
+    margin: 15px 0;
+    border-radius: 4px;
+    font-size: 0.85em;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+  .callout-warning {
+    background: #fdf6ec;
+    border-left: 5px solid #b45309; /* signalWarning */
+    padding: 15px 20px;
+    margin: 15px 0;
+    border-radius: 4px;
+    font-size: 0.85em;
+  }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+  }
+  .three-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    align-items: stretch;
+  }
+  .card {
+    background: #FAFAF7;
+    border: 1px solid #E2E5EA;
+    border-radius: 6px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  .card-header {
+    font-weight: bold;
+    color: #A02746; /* 桃花色 / Deep Rose */
+    border-bottom: 2px solid #A02746;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    font-size: 0.9em;
+  }
+  .card-body {
+    font-size: 0.75em;
+    line-height: 1.5;
+    color: #475569;
+  }
+  table {
+    font-size: 0.65em;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  th {
+    background: #A02746; /* 桃花色 / Deep Rose */
+    color: white;
+    padding: 8px 10px;
+    font-weight: bold;
+    text-align: left;
+  }
+  td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #E2E5EA;
+    color: #1F2937;
+  }
+  tr:nth-child(even) td {
+    background: #F1F3F5;
+  }
+  .footer-logo {
+    position: fixed;
+    bottom: 1em;
+    right: 1.5em;
+    font-size: 0.5em;
+    opacity: 0.6;
+    font-weight: bold;
+    color: #A02746; /* 桃花色 / Deep Rose */
+    z-index: 10;
+  }
+  ol, ul {
+    font-size: 0.85em;
+    line-height: 1.6;
+    color: #1F2937;
+  }
+  li {
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- ═══════════════ Slide 1: Title Slide ═══════════════ -->
+    <section data-background-color="#A02746">
+      <div style="text-align: center; margin-top: 50px;">
+        <h1 style="color: white; border: none; font-size: 2.2em; margin-bottom: 10px;">Sponsor Material Intake &amp; Provenance Lock</h1>
+        <h2 style="color: #FAFAF7; border: none; font-size: 1.3em; margin-bottom: 30px; opacity: 0.9;">Standard Operating Procedure (SOP)</h2>
+        <p style="color: rgba(255,255,255,0.9); font-size: 0.85em; margin-top: 50px;">
+          <strong>Core Rule: Lock down materials and evidence before writing. Never start drafting immediately upon receipt.</strong>
+        </p>
+        <p style="color: rgba(255,255,255,0.6); font-size: 0.6em; margin-top: 60px;">
+          Clinical Science &amp; Medical Affairs (CSMA) &nbsp;·&nbsp; July 2026
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════════ Slide 2: Agenda ═══════════════ -->
+    <section>
+      <h2>SOP Agenda</h2>
+      <div class="two-col">
+        <div>
+          <ol style="font-size: 0.75em;">
+            <li>Core Principle: Lock Before Write</li>
+            <li>Step 1: Identify Project Boundary</li>
+            <li>Step 2: Build Source Manifest</li>
+            <li>Step 3: Data Stratification</li>
+            <li>Step 4: Establish Data Lock Table</li>
+            <li>Step 5: Document Gaps &amp; Conflicts</li>
+          </ol>
+        </div>
+        <div>
+          <ol style="font-size: 0.75em;" start="7">
+            <li>Step 6: External Evidence Search</li>
+            <li>Step 7: Plan &amp; Downstream Impact</li>
+            <li>Step 8: Structured Drafting</li>
+            <li>Step 9: Translation &amp; Polish</li>
+            <li>Step 10: Pre-delivery Tri-dimensional QC</li>
+            <li>Starter Intake Command &amp; Self-Check</li>
+          </ol>
+        </div>
+      </div>
+      <aside class="notes">
+        Welcome to the Sponsor Material Intake SOP briefing. We will walk through the 10-step closed-loop process to ensure data integrity and compliance in regulatory medical writing.
+      </aside>
+    </section>
+
+    <!-- ═══════════════ Slide 3: Golden Rule ═══════════════ -->
+    <section>
+      <h2>Golden Rule: Lock Before Write</h2>
+      <div class="two-col" style="margin-top: 20px;">
+        <div class="callout">
+          <h3 style="text-align:left; color:#A02746; margin-top:0;"><strong>Best Practice: Lock &amp; Verify</strong></h3>
+          <p>Establish logs, stratify data, and construct a lock table to <span class="highlight">secure facts</span> and clarify data gaps before outlining the document structure.</p>
+          <p><small>✓ Guarantees source traceability and minimizes rework caused by mid-process data shifts.</small></p>
+        </div>
+        <div class="callout-warning">
+          <h3 style="text-align:left; color:#b45309; margin-top:0;"><strong>High Risk: Immediate Drafting</strong></h3>
+          <p>Drafting content immediately after reading files. This frequently leads to:</p>
+          <ul>
+            <li>Mixing expired and current data sets</li>
+            <li>Overlooking underlying data logic conflicts</li>
+            <li>Making blind "inferences" when key facts are missing</li>
+          </ul>
+        </div>
+      </div>
+      <aside class="notes">
+        "Lock before write" is our operational foundation. Most document rewrites occur because writers pull unverified numbers from email chains or chats.
+      </aside>
+    </section>
+
+    <!-- ═══════════════ Slide 4: Step 1 ═══════════════ -->
+    <section>
+      <h2>1. Identify Project Boundary</h2>
+      <p style="font-size: 0.9em; margin-bottom: 20px;">Before reading, anchor the scope of work and jurisdictional parameters:</p>
+      <ul>
+        <li class="fragment"><strong>Project Details</strong>: Confirm drug code, target indication (e.g., solid tumor), and current phase.</li>
+        <li class="fragment"><strong>Document Type</strong>: Identify target deliverables, such as Protocol, Investigator's Brochure (IB), Clinical Study Report (CSR), or Informed Consent Form (ICF).</li>
+        <li class="fragment"><strong>Regulatory Jurisdiction</strong>: Determine the target health authority (NMPA, FDA, EMA, TGA) to lock template specifications.</li>
+        <li class="fragment"><strong>Mark Data Gaps</strong>: Clearly flag any missing parameters using standard placeholders:
+          <div style="font-family: monospace; background: #F1F3F5; padding: 5px 15px; margin-top: 5px; border-radius: 4px; display: inline-block; font-size: 0.85em;">
+            [TBD: Target Section] &nbsp;&nbsp;&nbsp;&nbsp; [TBD: Data Cut-off Date]
+          </div>
+        </li>
+      </ul>
+      <aside class="notes">
+        First, we must clarify target health authorities. If key info is missing, use the standard [TBD] brackets as placeholders.
+      </aside>
+    </section>
+
+    <!-- ═══════════════ Slide 5: Step 2 ═══════════════ -->
+    <section>
+      <h2>2. Build Source Manifest</h2>
+      <p style="font-size:0.85em;">Catalog all incoming sponsor documents to prevent version confusion and ensure tracking:</p>
+      
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 8%">ID</th>
+            <th style="width: 32%">File Name</th>
+            <th style="width: 15%">Doc Type</th>
+            <th style="width: 18%">Version / Date</th>
+            <th style="width: 15%">Coverage</th>
+            <th style="width: 12%">Loc / Page</th>
+            <th style="width: 8%">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>SRC01</td>
+            <td>Protocol_v2.0_2026-06-07.pdf</td>
+            <td>Protocol</td>
+            <td>v2.0 (2026-06-07)</td>
+            <td>I/E Criteria, Endpoints</td>
+            <td>Sec 4, Page 12</td>
+            <td>Locked</td>
+          </tr>
+          <tr>
+            <td>SRC02</td>
+            <td>Safety_Data_Table_C3_v1.xlsx</td>
+            <td>Safety Table</td>
+            <td>v1.0 (2026-07-01)</td>
+            <td>AE/SAE Summary</td>
+            <td>Sheet: Sum, B5:F20</td>
+            <td>Locked</td>
+          </tr>
+          <tr>
+            <td>SRC03</td>
+            <td>Draft_IB_v0.5_CN.docx</td>
+            <td>Draft IB</td>
+            <td>v0.5 (2026-05-15)</td>
+            <td>Nonclinical PK</td>
+            <td>Sec 5.2, Page 45</td>
+            <td><span class="highlight">TBD</span></td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div class="callout" style="margin-top: 15px; font-size: 0.75em;">
+        <strong>Requirement</strong>: Proactively identify and flag duplicate files, superseded versions, and conflicting file versions.
+      </div>
+      <aside class="notes">
+        The Source Manifest catalogs all inputs. Always specify exact locations—down to sheet tab and cell range for spreadsheets.
+      </aside>
+    </section>
+
+    <!-- ═══════════════ Slide 6: Step 3 ═══════════════ -->
+    <section>
+      <h2>3. Data Stratification</h2>
+      <p style="font-size:0.85em; margin-bottom: 20px;">Classify all regulatory statements to maintain rigorous evidence standards:</p>
+      
+      <div class="three-col">
+        <div class="card">
+          <div class="card-header">1. Sponsor-Confirmed</div>
+          <div class="card-body">
+            <strong>Definition</strong>: Clinical data, study designs, or statistical findings explicitly provided and signed off by the sponsor.<br><br>
+            <strong>Action</strong>: Cited as <strong>Core Facts</strong>. Every reference must map to a Source ID.
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-header">2. External Evidence</div>
+          <div class="card-body">
+            <strong>Definition</strong>: Peer-reviewed literature, official guidelines, competitor clinical trial registration, or drug databases.<br><br>
+            <strong>Action</strong>: Used as <strong>Background Support</strong>. Requires full citation/bibliographic source tracking.
+          </div>
+        </div>
+        
+        <div class="card" style="border-color: #9f1239;">
+          <div class="card-header" style="color: #9f1239; border-color: #9f1239;">3. Inference</div>
+          <div class="card-body">
+            <strong>Definition</strong>: Calculations, projections, or clinical assertions proposed by medical writers or AI agents based on incomplete data.<br><br>
+            <strong>Action</strong>: <strong>Do not write as fact</strong>. Frame as advice and flag with `[TBD]` for sponsor approval.
+          </div>
+        </div>
+      </div>
+      <aside class="notes">
+        This stratification ensures that assumptions do not bleed into clinical facts. Logical inferences must always be approved by the sponsor.
+      </aside>
+    </section>
+
+    <!-- ═══════════════ Slide 7: Step 4 ═══════════════ -->
+    <section>
+      <h2>4. Establish Data Lock Table</h2>
+      <p style="font-size:0.85em; margin-bottom: 10px;">Prior to drafting, secure a hard lock on key clinical variables:</p>
+      
+      <div class="two-col">
+        <div>
+          <ul style="font-size: 0.7em;">
+            <li><strong>Design Parameters</strong>: Sample size, dose cohorts, and dosing schedule (regimen).</li>
+            <li><strong>Trial Logic</strong>: Primary efficacy endpoints, key inclusion/exclusion criteria.</li>
+            <li><strong>Safety &amp; PK</strong>: Severe adverse events (SAEs), dose-limiting toxicities (DLTs), critical PK/PD constants.</li>
+            <li><strong>Temporal Factors</strong>: Data Cut-off Date, protocol version numbers, and corresponding dates.</li>
+          </ul>
+        </div>
+        
+        <div class="callout" style="margin-top: 0;">
+          <strong style="font-size: 0.9em; color:#A02746;">Lock Example:</strong>
+          <table style="font-size:0.7em; margin-top:5px;">
+            <thead>
+              <tr><th>Parameter</th><th>Value</th><th>Source ID Location</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Sample Size</td><td>N = 45</td><td>SRC01, Sec 9.1, p82</td></tr>
+              <tr><td>Dose Level</td><td>10 mg/kg</td><td>SRC01, Sec 5.3, p40</td></tr>
+              <tr><td>Primary EP</td><td>ORR (RECIST 1.1)</td><td>SRC01, Sec 3.2, p24</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <aside class="notes">
+        A locked table serves as the single source of truth for the entire writing project. Every key number should reference this table.
+      </aside>
+    </section>
+
+    <!-- ═══════════════ Slide 8: Step 5 ═══════════════ -->
+    <section>
+      <h2>5. Document Gaps &amp; Conflicts</h2>
+      <p style="font-size:0.85em; margin-bottom: 15px;">When data contradictions arise, <span class="highlight">do not make arbitrary writing decisions</span>. Maintain a Gap Log:</p>
+      
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 25%">Conflict/Gap Description</th>
+            <th style="width: 15%">Risk Level</th>
+            <th style="width: 20%">Impacted Sections</th>
+            <th style="width: 25%">Required Sponsor Action</th>
+            <th style="width: 15%">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Protocol claims PFS as primary endpoint; SAP lists ORR.</td>
+            <td><span style="color:#9f1239; font-weight:bold;">High</span></td>
+            <td>Protocol Sec 3.0 / CSR Sec 9.0</td>
+            <td>Clarify primary endpoint and provide final SAP decision.</td>
+            <td>Open</td>
+          </tr>
+          <tr>
+            <td>Cycle 3 safety summary missing; only C1 &amp; C2 available.</td>
+            <td><span style="color:#b45309; font-weight:bold;">Medium</span></td>
+            <td>CSR Sec 12.0 / IB Sec 6.2</td>
+            <td>Provide missing Cycle 3 safety aggregate dataset.</td>
+            <td>Open</td>
+          </tr>
+          <tr>
+            <td>References site an outdated 2020 FDA guideline version.</td>
+            <td><span style="color:#475569; font-weight:bold;">Low</span></td>
+            <td>Protocol References</td>
+            <td>Update references to the current June 2026 guidelines.</td>
+            <td>Open</td>
+          </tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        Never try to reconcile documents silently. If the Protocol and the SAP clash, log it immediately and route it back to the sponsor for sign-off.
+      </aside>
+    </section>
+
+    <!-- ═══════════════ Slide 9: Step 6 ═══════════════ -->
+    <section>
+      <h2>6. External Evidence Search</h2>
+      <p style="font-size:0.85em; margin-bottom: 15px;">Conduct targeted external searches to support study rationale or resolve data gaps:</p>
+      
+      <div class="two-col">
+        <div>
+          <h3 style="text-align:left; font-size:1em; color:#A02746;"><strong>Search Scope &amp; Registers</strong></h3>
+          <ul style="font-size: 0.7em;">
+            <li><strong>Trial Design Precedents</strong>: Search registries (e.g., ClinicalTrials.gov) to review cohort sizes, endpoints, and dosing for comparator trials.</li>
+            <li><strong>Regulatory Precedents</strong>: Pull target-specific guidance papers from FDA, EMA, or NMPA (CDE).</li>
+            <li><strong>Safety &amp; Clinical Literature</strong>: Identify safety profiles (e.g., CRS, neurotoxicity) for matching drug classes.</li>
+          </ul>
+        </div>
+        
+        <div class="callout" style="margin-top:0;">
+          <h3 style="text-align:left; font-size:1em; color:#A02746; margin-top:0;"><strong>Traceability Requirements:</strong></h3>
+          <p style="font-size:0.85em; line-height:1.4;">All external references must capture the following metadata:</p>
+          <ul style="font-size: 0.75em;">
+            <li>Exact search database and key terms used</li>
+            <li>Version or release date of reference materials</li>
+            <li>Unique identifiers (DOI / PMID / NCT number)</li>
+            <li>Date of access by the medical writing team</li>
+          </ul>
+        </div>
+      </div>
+      <aside class="notes">
+        External search results are highly valuable for justifying dose selections. Keep audit trails for all external datasets.
+      </aside>
+    </section>
+
+    <!-- ═══════════════ Slide 10: Step 7 ═══════════════ -->
+    <section>
+      <h2>7. Plan &amp; Downstream Impact</h2>
+      <p style="font-size:0.85em; margin-bottom: 10px;">Analyze document linkage to identify downstream update requirements during changes:</p>
+      
+      <table style="font-size: 0.6em;">
+        <thead>
+          <tr>
+            <th>Change Source</th>
+            <th>Change Type</th>
+            <th>Required Downstream Updates &amp; Sections</th>
+            <th>Priority</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Protocol</strong></td>
+            <td>Primary endpoint change</td>
+            <td>1. <strong>IB Sec 6</strong>: Update efficacy evaluation criteria<br>2. <strong>CDP</strong>: Recalibrate development milestones and logic<br>3. <strong>CSR Sec 9</strong>: Update analytical dataset definitions</td>
+            <td><span style="color:#9f1239; font-weight:bold;">P1 (Must sync now)</span></td>
+          </tr>
+          <tr>
+            <td><strong>Protocol</strong></td>
+            <td>Dose / regimen modification</td>
+            <td>1. <strong>IB Sec 4-5</strong>: Update exposure levels and risk profiles<br>2. <strong>ICF</strong>: Revise patient risk disclosures and safety language<br>3. <strong>RMP</strong>: Update safety risk mitigation procedures</td>
+            <td><span style="color:#9f1239; font-weight:bold;">P1 (Must sync now)</span></td>
+          </tr>
+          <tr>
+            <td><strong>IB</strong></td>
+            <td>New nonclinical safety signal</td>
+            <td>1. <strong>Protocol</strong>: Adjust stopping rules / dose-interruption criteria<br>2. <strong>ICF</strong>: Update informed consent risk parameters</td>
+            <td><span style="color:#b45309; font-weight:bold;">P2 (Recommended)</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <aside class="notes">
+        A single change to a protocol endpoint impacts the IB, the ICF, and the CSR. Follow this matrix to guarantee all downstream documents remain synchronized.
+      </aside>
+    </section>
+
+    <!-- ═══════════════ Slide 11: Step 8 ═══════════════ -->
+    <section>
+      <h2>8. Structured Drafting</h2>
+      <p style="font-size:0.85em; margin-bottom: 20px;">Use standard regulatory templates and adhere strictly to scientific writing standards:</p>
+      
+      <div class="two-col">
+        <div class="card">
+          <div class="card-header">Objective &amp; Neutral Voice</div>
+          <div class="card-body">
+            Use third-person, passive, or objective voice. Avoid first-person pronouns like "we" or "I" and subjective superlatives.<br>
+            <span class="highlight">Avoid colloquialisms</span>: e.g., instead of "the drug was highly safe," write "the investigational product was well tolerated, with no DLTs observed."
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-header">Precision &amp; Terminology</div>
+          <div class="card-body">
+            Define all technical terms on first use (e.g., RECIST 1.1, CTCAE v5.0). Maintain consistency across sections.<br>
+            <strong>Do not overstate clinical findings</strong>: never report nonclinical or early exploratory indicators as confirmed generalizable facts.
+          </div>
+        </div>
+      </div>
+      <aside class="notes">
+        Our voice must remain analytical. Always use objective terms like "tolerable" rather than commercial terms like "highly safe".
+      </aside>
+    </section>
+
+    <!-- ═══════════════ Slide 12: Step 9 ═══════════════ -->
+    <section>
+      <h2>9. Translation &amp; Polish</h2>
+      <p style="font-size:0.85em; margin-bottom: 10px;">For bilingual submissions, execute the translation and refinement stages sequentially:</p>
+      
+      <div style="position: relative; padding: 15px; background: #F1F3F5; border-radius: 6px; border: 1px solid #E2E5EA; margin-top: 15px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; text-align: center; font-size: 0.75em; font-weight: bold;">
+          <div style="width: 20%; background: #A02746; color: white; padding: 10px; border-radius: 4px;">1. Raw Draft<br><small>Machine Trans</small></div>
+          <div style="font-size: 1.5em; color: #A02746;">➔</div>
+          <div style="width: 22%; background: #A02746; color: white; padding: 10px; border-radius: 4px;">2. Terminology Lock<br><small>Lock Glossary &amp; Polish</small></div>
+          <div style="font-size: 1.5em; color: #A02746;">➔</div>
+          <div style="width: 20%; background: #A02746; color: white; padding: 10px; border-radius: 4px;">3. Data Integrity QC<br><small>Verify Numbers</small></div>
+          <div style="font-size: 1.5em; color: #A02746;">➔</div>
+          <div style="width: 22%; background: #0A0E1A; color: white; padding: 10px; border-radius: 4px;">4. Final Delivery<br><small>Target Only Preserved</small></div>
+        </div>
+      </div>
+      
+      <ul style="font-size: 0.75em; margin-top: 20px;">
+        <li><strong>Glossary Enforcement</strong>: Locking key terms prevents incorrect rewrites during polishing.</li>
+        <li><strong>Bilingual Checks</strong>: Retain parallel bilingual files during editing to verify translations before exporting the final target document.</li>
+      </ul>
+      <aside class="notes">
+        Bilingual workflows protect data. Reviewers should compare source and target side-by-side before removing the secondary language layer.
+      </aside>
+    </section>
+
+    <!-- ═══════════════ Slide 13: Step 10 ═══════════════ -->
+    <section>
+      <h2>10. Pre-delivery Tri-dimensional QC</h2>
+      <p style="font-size:0.85em; margin-bottom: 15px;">Prior to external delivery, execute the final tri-dimensional verification workflow:</p>
+      
+      <div class="three-col">
+        <div class="card">
+          <div class="card-header">1. Citation QC</div>
+          <div class="card-body">
+            Verify every bibliographic citation.<br><br>
+            Cross-check DOI, PMID, and NCT entries to ensure literature statements match the original published research.
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-header">2. Intra-Document QC</div>
+          <div class="card-body">
+            Audit internal consistency.<br><br>
+            Confirm that statistical descriptors in the methodology sections align with summary data tables and footnotes.
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-header">3. Cross-Check</div>
+          <div class="card-body">
+            Perform inter-document sanity checks.<br><br>
+            Verify terminology alignment between Protocol, Investigator's Brochure, and ICF to catch discrepancies.
+          </div>
+        </div>
+      </div>
+      <aside class="notes">
+        Tri-dimensional QC is our final line of defense. It captures numeric slip-ups and mismatched terminology before documents reach the client.
+      </aside>
+    </section>
+
+    <!-- ═══════════════ Slide 14: Starter Command ═══════════════ -->
+    <section>
+      <h2>Starter Command &amp; Self-Check</h2>
+      <div class="two-col" style="margin-top: 10px;">
+        <div class="callout" style="margin-top: 0; font-size: 0.8em;">
+          <h3 style="text-align: left; margin-top: 0; color: #A02746;"><strong>Intake Command Template</strong></h3>
+          <p>Initialize every intake by logging standard parameters:</p>
+          <pre style="font-size: 0.7em; background: #F1F3F5; padding: 10px; border-radius: 4px; border: 1px solid #E2E5EA; color: #1F2937;"><code>
+Project Name:
+Document Type:
+Regulatory Jurisdiction:
+Target Sections:
+Data Cut-off Date:
+External Search Needed? (Y/N):
+Translation Needed? (Y/N):
+Output Format:
+          </code></pre>
+        </div>
+        
+        <div>
+          <h3 style="text-align: left; margin-top: 0; color: #A02746; font-size: 1.1em;"><strong>Four Core Integrity Questions</strong></h3>
+          <p style="font-size: 0.8em;">Verify every statement and data point against these four questions:</p>
+          <ol style="font-size: 0.7em;">
+            <li><strong>What is the source?</strong> (Verify precise input file)</li>
+            <li><strong>What is the version?</strong> (Confirm version and date)</li>
+            <li><strong>Where is the location?</strong> (Trace exact page or sheet coordinate)</li>
+            <li><strong>Is it confirmed?</strong> (Has the sponsor signed off, or is it an inference?)</li>
+          </ol>
+        </div>
+      </div>
+      <aside class="notes">
+        Use this intake template for project kick-off. Always challenge key facts with the four integrity questions before final sign-off.
+      </aside>
+    </section>
+
+    <!-- ═══════════════ Slide 15: Q&A / End ═══════════════ -->
+    <section data-background-color="#A02746" style="text-align: center;">
+      <div style="margin-top: 150px;">
+        <h1 style="color: white; border: none; font-size: 2.2em;">Thank You</h1>
+        <p style="color: rgba(255,255,255,0.7); font-size: 1em; margin-top: 20px;">Questions &amp; Discussion</p>
+        <p style="color: rgba(255,255,255,0.5); font-size: 0.6em; margin-top: 80px;">
+          <!-- PDF Export: Open in Chrome, append ?print-pdf to URL, then Ctrl+P → Save as PDF -->
+          * PDF Export: Open in Chrome, append <code>?print-pdf</code> to the URL, and press Ctrl+P to Save as PDF.
+        </p>
+      </div>
+    </section>
+
+  </div><!-- /.slides -->
+  <div class="footer-logo">HiRO CSMA · Intake &amp; Provenance Lock SOP</div>
+</div><!-- /.reveal -->
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/highlight/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
+<script>
+Reveal.initialize({
+  hash: true,
+  slideNumber: 'c/t',
+  transition: 'slide',
+  transitionSpeed: 'default',
+  controls: true,
+  progress: true,
+  center: false,
+  width: 1280,
+  height: 720,
+  margin: 0.04,
+  plugins: [ RevealNotes, RevealHighlight, RevealMath ]
+});
+</script>
+</body>
+</html>
